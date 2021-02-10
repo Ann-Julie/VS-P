@@ -1,4 +1,4 @@
-package de.vsys.projects.jhu;
+package de.vsys.project.jhu;
 
 public class CountryData {
     String date;

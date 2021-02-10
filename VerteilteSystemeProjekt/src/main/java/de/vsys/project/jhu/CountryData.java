@@ -1,6 +1,10 @@
 package de.vsys.project.jhu;
 
 public class CountryData {
+    /*
+    @author: Mike Witkowski
+    This class is the template for the json data from the john hopkins university
+     */
     private String date;
     private int confirmed;
     private int deaths;

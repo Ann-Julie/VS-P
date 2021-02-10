@@ -7,6 +7,11 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class Request {
+    /*
+    @author: Mike Witkowski
+    This class sends a get request to the url which is defined in the constructor.
+    To send the request, you have to call the sendRequest method
+    */
     HttpClient client;
     HttpRequest request;
     HttpResponse<String> response;

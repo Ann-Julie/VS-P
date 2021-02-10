@@ -1,5 +1,3 @@
-import de.vsys.project.rki.RequestRKI;
-
 public class Main {
     public static void main(String []args) throws Exception {
 

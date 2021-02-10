@@ -1,9 +1,9 @@
-import com.google.gson.Gson;
+import de.vsys.project.jhu.Request;
 
 public class Main {
     public static void main(String []args){
-        Gson gson = new Gson();
-        int one = 7;
+        Request request = new Request("https://pomber.github.io/covid19/timeseries.json");
+
     }
 
 }

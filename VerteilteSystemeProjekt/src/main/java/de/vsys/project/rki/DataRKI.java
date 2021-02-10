@@ -8,9 +8,9 @@ package de.vsys.project.rki;
  * erhält
  */
 public class DataRKI {
-    private StateData[] features;
+    private Attributes[] features;
 
-    public StateData[] getData(){
+    public Attributes[] getData(){
         return features;
     }
 }

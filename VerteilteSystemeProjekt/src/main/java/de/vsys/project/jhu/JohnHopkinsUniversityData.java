@@ -22,11 +22,15 @@ public class JohnHopkinsUniversityData {
         int result = countryData.getData()[countryData.getData().length-1].getConfirmed();
         return result;
     }
+
+    //This method calculates the average increase of the confirmed numbers in the last 24 h
     public double checkIncreaseFromLastTwentyFoursHours(){
         countryData = reader.readData();
         double result = mathOperations.roundNumber(((double)(countryData.getData()[(countryData.getData().length)-1].getConfirmed())/(double)(countryData.getData()[(countryData.getData().length)-2].getConfirmed())-1) * 100);
         return result;
     }
+
+    //This method calculates the average increase of the confirmed numbers in the time specified time period
     public double checkAverageIncreaseFromLastNDays(int days){
         countryData = reader.readData();
         double result=0;

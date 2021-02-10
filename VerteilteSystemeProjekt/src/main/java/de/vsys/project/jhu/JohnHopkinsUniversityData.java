@@ -9,15 +9,14 @@ public class JohnHopkinsUniversityData {
 
     public int checkNewInfectionsFromLastTwentyFourHours(){
         countryData = reader.readData();
-        int result;
-        result = countryData.getData()[(countryData.getData().length)-1].getConfirmed() - countryData.getData()[(countryData.getData().length)-2].getConfirmed();
+        int result = countryData.getData()[(countryData.getData().length)-1].getConfirmed() - countryData.getData()[(countryData.getData().length)-2].getConfirmed();
         return result;
 
     }
     public void checkTotalInfections(){
 
     }
-    public void checkIncreseFromLastTwentyFoursHours(){
+    public void checkIncreaseFromLastTwentyFoursHours(){
 
     }
     public void checkAverageIncreaseFromLastNDays(int days){

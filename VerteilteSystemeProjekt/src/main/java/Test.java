@@ -7,6 +7,9 @@ public class Test {
 
 
         Gson gson = new Gson();
+        Player player = new Player();
+        String spieler = gson.toJson(player);
+        System.out.println(spieler);
 
     }
 }

@@ -83,15 +83,6 @@
     <orderEntry type="library" name="Maven: org.apache.maven:maven-settings:3.5.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.resolver:maven-resolver-api:1.1.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.maven.resolver:maven-resolver-util:1.1.1" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: com.sun:tools:1.6.0">
-        <CLASSES>
-          <root url="jar://$USER_HOME$/.jdks/corretto-1.8.0_282/lib/tools.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
     <orderEntry type="library" name="Maven: jakarta.xml.ws:jakarta.xml.ws-api:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: jakarta.activation:jakarta.activation-api:1.2.1" level="project" />

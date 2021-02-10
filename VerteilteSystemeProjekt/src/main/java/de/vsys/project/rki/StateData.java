@@ -1,5 +1,11 @@
 package de.vsys.project.rki;
 
+/**
+ * authors: Max, AJ, Jona
+ *
+ * In dieser Klasse werden Variablen festgelegt mit gettern und settern
+ * für das Bundesland, die Fälle und die entsprechende ID
+ */
 public class StateData {
     String LAN_ew_GEN;
     int cases7_bl_per_100k;

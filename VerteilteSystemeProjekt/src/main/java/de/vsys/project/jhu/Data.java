@@ -1,7 +1,7 @@
 package de.vsys.project.jhu;
 
 public class Data {
-    CountryData[] Germany;
+    private CountryData[] Germany;
 
     public CountryData[] getData() {
         return Germany;

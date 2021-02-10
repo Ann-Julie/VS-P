@@ -4,6 +4,14 @@ package de.vsys.project.rki;
 import com.google.gson.Gson;
 import de.vsys.project.general.Request;
 
+/**
+ * authors: Max, AJ, Jona
+ *
+ * In dieser Klasse werden JSON Objekte erstellt
+ * Sie ist dazu da, um Anfragen zu machen und direkt eine Antwort zu erhalten
+ * Dazu wird die JSON Datei durchgegangen und Bundesländer sowie Neuinfektionen ausgegeben
+ * Der Request selbst wird aus dem General Ordner und der Request.java Klasse geholt
+ */
 public class ReaderRKI {
     public static void main(String []args){
         Gson gson = new Gson();

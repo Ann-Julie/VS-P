@@ -15,8 +15,8 @@ public class JohnHopkinsUniversityData {
         countryData = reader.readData();
         int result = countryData.getData()[(countryData.getData().length)-1].getConfirmed() - countryData.getData()[(countryData.getData().length)-2].getConfirmed();
         return result;
-
     }
+
     public int checkTotalInfections(){
         countryData = reader.readData();
         int result = countryData.getData()[countryData.getData().length-1].getConfirmed();

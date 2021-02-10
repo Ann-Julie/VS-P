@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import de.vsys.project.general.Request;
 
 /**
- * authors: Max, AJ, Jona
+ * authors: Max, AJ, Jona, Mike
  *
  * In dieser Klasse werden JSON Objekte erstellt
  * Sie ist dazu da, um Anfragen zu machen und direkt eine Antwort zu erhalten
@@ -13,18 +13,16 @@ import de.vsys.project.general.Request;
  * Der Request selbst wird aus dem General Ordner und der Request.java Klasse geholt
  */
 public class ReaderRKI {
+    Gson gson;
+    Request request;
 
-    public static void main(String []args){
-        Gson gson = new Gson();
-        Request request = new Request("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Coronaf%C3%A4lle_in_den_Bundesl%C3%A4ndern/FeatureServer/0/query?where=1%3D1&outFields=cases7_bl_per_100k,LAN_ew_GEN&returnGeometry=false&returnDistinctValues=true&outSR=4326&f=json");
-        DataRKI dataRKI = gson.fromJson(request.sendRequest(),DataRKI.class);
+    public ReaderRKI(){
+        gson = new Gson();
+        request = new Request("https://services7.arcgis.com/mOBPykOjAyBO2ZKk/arcgis/rest/services/Coronaf%C3%A4lle_in_den_Bundesl%C3%A4ndern/FeatureServer/0/query?where=1%3D1&outFields=cases7_bl_per_100k,LAN_ew_GEN&returnGeometry=false&returnDistinctValues=true&outSR=4326&f=json");
+    }
 
-        for(Attributes attribute: dataRKI.getData()){
-            System.out.println(attribute.getAttributes().getCases7_bl_per_100k());
-            System.out.println(attribute.getAttributes().getLAN_ew_GEN());
-        }
-
-
-
+    public DataRKI readData(){
+        DataRKI dataRKI = gson.fromJson(request.sendRequest(), DataRKI.class);
+        return dataRKI;
     }
 }

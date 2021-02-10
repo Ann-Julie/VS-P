@@ -13,8 +13,10 @@ public class JohnHopkinsUniversityData {
         return result;
 
     }
-    public void checkTotalInfections(){
-
+    public int checkTotalInfections(){
+        countryData = reader.readData();
+        int result = countryData.getData()[countryData.getData().length-1].getConfirmed();
+        return result;
     }
     public void checkIncreaseFromLastTwentyFoursHours(){
 

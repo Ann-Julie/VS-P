@@ -3,8 +3,8 @@ package de.vsys.project.jhu;
 import de.vsys.project.general.MathOperations;
 
 public class JohnHopkinsUniversityData {
-    Reader reader;
-    Data countryData;
+    private Reader reader;
+    private Data countryData;
     MathOperations mathOperations;
     public JohnHopkinsUniversityData(){
         reader = new Reader();

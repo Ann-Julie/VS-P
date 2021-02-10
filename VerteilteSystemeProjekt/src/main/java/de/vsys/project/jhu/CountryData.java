@@ -1,10 +1,10 @@
 package de.vsys.project.jhu;
 
 public class CountryData {
-    String date;
-    int confirmed;
-    int deaths;
-    int recovered;
+    private String date;
+    private int confirmed;
+    private int deaths;
+    private int recovered;
 
     public String getDate() {
         return date;

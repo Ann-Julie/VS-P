@@ -10,11 +10,11 @@ public class AllData {
     private int totalInfections;
     private int increaseLastTwentyFourHours;
     private double averageIncreaseLastNDays;
-    private int targetTotalInfection;
-    private int forecastNecessaryLockdownDays;
-    private int incidenceValueLastSevenDays;
+    private double targetTotalInfection;
+    private double forecastNecessaryLockdownDays;
+    private double incidenceValueLastSevenDays;
 
-    public int getIncidenceValueLastSevenDays() {
+    public double getIncidenceValueLastSevenDays() {
         return incidenceValueLastSevenDays;
     }
 
@@ -54,7 +54,7 @@ public class AllData {
         this.averageIncreaseLastNDays = averageIncreaseLastNDays;
     }
 
-    public int getTargetTotalInfection() {
+    public double getTargetTotalInfection() {
         return targetTotalInfection;
     }
 
@@ -62,7 +62,7 @@ public class AllData {
         this.targetTotalInfection = targetTotalInfection;
     }
 
-    public int getForecastNecessaryLockdownDays() {
+    public double getForecastNecessaryLockdownDays() {
         return forecastNecessaryLockdownDays;
     }
 

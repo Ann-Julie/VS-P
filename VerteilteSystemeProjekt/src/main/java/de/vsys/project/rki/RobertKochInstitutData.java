@@ -123,14 +123,4 @@ public class RobertKochInstitutData {
         double averageDecrease = (jhuData.checkIncreaseFromLastTwentyFourHours()) * -1;
         return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
     }
-
-
-    //andere Methoden reinmachen
-    public static void main(String[] args) {
-        RobertKochInstitutData rkiData = new RobertKochInstitutData();
-    //    System.out.println(rkiData.daysUntilRTargetIsReached(7, 0.7));
-        System.out.println("7-Tage Inzidenzwert: " + rkiData.calculateIncidenceValueLastSevenDays());
-        System.out.println("Zielgesamtinfektion: " + rkiData.calculateTargetNumberOfTotalInfection());
-        System.out.println("Lockdown-Resttage: "   + rkiData.calculateRequiredDaysForLockdown());
-    }
 }

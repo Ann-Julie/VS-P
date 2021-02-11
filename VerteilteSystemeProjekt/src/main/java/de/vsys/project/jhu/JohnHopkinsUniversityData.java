@@ -34,17 +34,17 @@ public class JohnHopkinsUniversityData {
     }
 
     //This method calculates the average increase of the confirmed numbers in the last 24 h
-    public double checkIncreaseFromLastTwentyFoursHours() {
+    public int checkIncreaseFromLastTwentyFoursHours() {
         Data countryData = reader.readData();
-        double confirmedYesterday = (countryData.getData()[(countryData.getData().length) - 1].getConfirmed());
-        double deathsYesterday = (countryData.getData()[(countryData.getData().length) - 1].getDeaths());
-        double recoveredYesterday = (countryData.getData()[(countryData.getData().length) - 1].getRecovered());
-        double totalYesterday = confirmedYesterday - deathsYesterday - recoveredYesterday;
+        int confirmedYesterday = (countryData.getData()[(countryData.getData().length) - 1].getConfirmed());
+        int deathsYesterday = (countryData.getData()[(countryData.getData().length) - 1].getDeaths());
+        int recoveredYesterday = (countryData.getData()[(countryData.getData().length) - 1].getRecovered());
+        int totalYesterday = confirmedYesterday - deathsYesterday - recoveredYesterday;
 
-        double confirmedDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getConfirmed());
-        double deathsDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getDeaths());
-        double recoveredDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getRecovered());
-        double totalDayBeforeYesterday = confirmedDayBeforeYesterday - deathsDayBeforeYesterday - recoveredDayBeforeYesterday;
+        int confirmedDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getConfirmed());
+        int deathsDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getDeaths());
+        int recoveredDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getRecovered());
+        int totalDayBeforeYesterday = confirmedDayBeforeYesterday - deathsDayBeforeYesterday - recoveredDayBeforeYesterday;
 
         return totalYesterday - totalDayBeforeYesterday;
     }

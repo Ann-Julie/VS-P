@@ -93,11 +93,11 @@ public class RobertKochInstitutData {
         return (activeCasesYesterday - targetTotalNumberOfInfections(rTarget)) / avgNewCasesDecrease;
     }
 
+    //@Author Max
     public double calculateIncidenceValueLastSevenDays(){
         DataRKI stateData = readerRKI.readData();
         double result = 0;
         double value = 0;
-        System.out.println(stateData.getData().length);
         for(int i = 0; i <= stateData.getData().length - 1; i++){
             value = stateData.getData()[stateData.getData().length - i - 1].getAttributes().getCases7_bl_per_100k();
             result += value;
@@ -106,10 +106,29 @@ public class RobertKochInstitutData {
         return result;
     }
 
+    //@Author Max
+    public double calculateTargetNumberOfTotalInfection(){
+        int totalInfection = jhuData.checkTotalInfections();
+        double incidenceValue = calculateIncidenceValueLastSevenDays();
+        int targetIncidence = 35;
+        return (totalInfection / incidenceValue) * targetIncidence;
+    }
+
+    //@Author Max
+    public double calculateRequiredDaysForLockdown(){
+        int totalInfection = jhuData.checkTotalInfections();
+        double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();
+        double averageDecrease = (jhuData.checkIncreaseFromLastTwentyFoursHours()) * -1;
+        return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
+    }
+
+
     //andere Methoden reinmachen
     public static void main(String[] args) {
         RobertKochInstitutData rkiData = new RobertKochInstitutData();
     //    System.out.println(rkiData.daysUntilRTargetIsReached(7, 0.7));
-        System.out.println(rkiData.calculateIncidenceValueLastSevenDays());
+        System.out.println("7-Tage Inzidenzwert: " + rkiData.calculateIncidenceValueLastSevenDays());
+        System.out.println("Zielgesamtinfektion: " + rkiData.calculateTargetNumberOfTotalInfection());
+        System.out.println("Lockdown-Resttage: " + rkiData.calculateRequiredDaysForLockdown());
     }
 }

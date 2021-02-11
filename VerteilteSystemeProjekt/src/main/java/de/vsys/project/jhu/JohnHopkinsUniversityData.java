@@ -70,13 +70,7 @@ public class JohnHopkinsUniversityData {
         result = result / days;
         return result;
     }
-
-
-    public static void main(String[] args) {
-        JohnHopkinsUniversityData johnHopkinsUniversityData = new JohnHopkinsUniversityData();
-        System.out.println(johnHopkinsUniversityData.checkTotalInfections());
-    }
-
+    
 
 
 

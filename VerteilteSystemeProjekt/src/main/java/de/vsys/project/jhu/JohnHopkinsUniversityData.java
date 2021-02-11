@@ -35,9 +35,17 @@ public class JohnHopkinsUniversityData {
     public double checkIncreaseFromLastTwentyFoursHours() {
         Data countryData = reader.readData();
         double confirmedYesterday = (countryData.getData()[(countryData.getData().length) - 1].getConfirmed());
+        double deathsYesterday = (countryData.getData()[(countryData.getData().length) - 1].getDeaths());
+        double recoveredYesterday = (countryData.getData()[(countryData.getData().length) - 1].getRecovered());
+        double totalYesterday = confirmedYesterday - deathsYesterday - recoveredYesterday;
+
         double confirmedDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getConfirmed());
-        double percentIncrease = (confirmedYesterday / confirmedDayBeforeYesterday - 1) * 100;
-        return mathOperations.roundNumberToTwoDecimals(percentIncrease);
+        double deathsDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getDeaths());
+        double recoveredDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getRecovered());
+        double totalDayBeforeYesterday = confirmedDayBeforeYesterday - deathsDayBeforeYesterday - recoveredDayBeforeYesterday;
+
+        double result = totalYesterday - totalDayBeforeYesterday;
+        return result;
     }
 
     //This method calculates the average increase of the confirmed numbers in the time specified time period
@@ -45,13 +53,20 @@ public class JohnHopkinsUniversityData {
         Data countryData = reader.readData();
         double result = 0;
         for (int i = 1; i <= days; i++) {
-            double confirmedCurrent = (countryData.getData()[(countryData.getData().length) - i].getConfirmed());
-            double confirmedDayBeforeCurrent = (countryData.getData()[(countryData.getData().length) - (i + 1)].getConfirmed());
-            result += (confirmedCurrent / confirmedDayBeforeCurrent) - 1;
+            double confirmedCurrent = countryData.getData()[(countryData.getData().length) - i].getConfirmed();
+            double deathsCurrent = countryData.getData()[(countryData.getData().length) - i].getDeaths();
+            double recoveredCurrent = countryData.getData()[(countryData.getData().length) - i].getRecovered();
+            double totalCurrent = confirmedCurrent - deathsCurrent - recoveredCurrent;
+
+            double confirmedDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i+1)].getConfirmed();
+            double deathsDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i+1)].getDeaths();
+            double recoveredDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i+1)].getRecovered();
+            double totalDayBeforeCurrent = confirmedDayBeforeCurrent - deathsDayBeforeCurrent - recoveredDayBeforeCurrent;
+
+            result += totalCurrent - totalDayBeforeCurrent;
         }
 
-        result = (result / days) * 100;
-        result = mathOperations.roundNumberToTwoDecimals(result);
+        result = result / days;
         return result;
     }
 

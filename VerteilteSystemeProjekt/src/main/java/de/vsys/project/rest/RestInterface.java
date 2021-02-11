@@ -20,8 +20,12 @@ public class RestInterface {
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
             returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFoursHours());
             //Set Robert Koch data
-
            return gson.toJson(returnData);
+        });
+        get("totalinfections",(request, response) ->{
+            ReturnData returnData = new ReturnData();
+            returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
+            return gson.toJson(returnData);
         });
     }
 }

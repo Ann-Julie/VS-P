@@ -10,9 +10,9 @@ import static java.util.Arrays.asList;
 
 public class RobertKochInstitutData {
     /*
-    @author: Mike Witkowski
-    description...
-     */
+    @author: Maximilian Meyer, Jona Heinzer
+    This class uses information collected from the RKI to calculate the required values.
+    */
     private ReaderRKI readerRKI;
     private DataRKI data;
     private JohnHopkinsUniversityData jhuData;
@@ -93,7 +93,7 @@ public class RobertKochInstitutData {
         return (activeCasesYesterday - targetTotalNumberOfInfections(rTarget)) / avgNewCasesDecrease;
     }
 
-    //@Author Max
+    //@author Maximilian Meyer
     public double calculateIncidenceValueLastSevenDays(){
         DataRKI stateData = readerRKI.readData();
         double result = 0;
@@ -106,7 +106,7 @@ public class RobertKochInstitutData {
         return result;
     }
 
-    //@Author Max
+    //@author Maximilian Meyer
     public double calculateTargetNumberOfTotalInfection(){
         int totalInfection = jhuData.checkTotalInfections();
         double incidenceValue = calculateIncidenceValueLastSevenDays();
@@ -114,11 +114,11 @@ public class RobertKochInstitutData {
         return (totalInfection / incidenceValue) * targetIncidence;
     }
 
-    //@Author Max
+    //@author Maximilian Meyer
     public double calculateRequiredDaysForLockdown(){
         int totalInfection = jhuData.checkTotalInfections();
         double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();
-        double averageDecrease = (jhuData.checkIncreaseFromLastTwentyFoursHours()) * -1;
+        double averageDecrease = (jhuData.checkIncreaseFromLastTwentyFourHours()) * -1;
         return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
     }
 

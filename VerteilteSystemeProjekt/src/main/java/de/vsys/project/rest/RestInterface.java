@@ -25,7 +25,9 @@ public class RestInterface {
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
             returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
             //Set Robert Koch data
-
+            returnData.setTargetTotalInfection(robertKochInstitutData.calculateTargetNumberOfTotalInfection());
+            returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
+            returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());
 
            return gson.toJson(returnData);
         });

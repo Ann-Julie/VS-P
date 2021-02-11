@@ -46,8 +46,7 @@ public class JohnHopkinsUniversityData {
         double recoveredDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getRecovered());
         double totalDayBeforeYesterday = confirmedDayBeforeYesterday - deathsDayBeforeYesterday - recoveredDayBeforeYesterday;
 
-        double result = totalYesterday - totalDayBeforeYesterday;
-        return result;
+        return totalYesterday - totalDayBeforeYesterday;
     }
 
     //This method calculates the average increase of the confirmed numbers in the time specified time period

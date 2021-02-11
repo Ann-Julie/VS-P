@@ -8,7 +8,7 @@ public class AllData {
 
     private int newInfectionsLastTwentyFourHours;
     private int totalInfections;
-    private double increaseLastTwentyFourHours;
+    private int increaseLastTwentyFourHours;
     private double averageIncreaseLastNDays;
     private int targetTotalInfection;
     private int forecastNecessaryLockdownDays;
@@ -42,7 +42,7 @@ public class AllData {
         return increaseLastTwentyFourHours;
     }
 
-    public void setIncreaseLastTwentyFourHours(double increaseLastTwentyFourHours) {
+    public void setIncreaseLastTwentyFourHours(int increaseLastTwentyFourHours) {
         this.increaseLastTwentyFourHours = increaseLastTwentyFourHours;
     }
 

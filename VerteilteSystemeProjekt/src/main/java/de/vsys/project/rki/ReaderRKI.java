@@ -4,15 +4,11 @@ package de.vsys.project.rki;
 import com.google.gson.Gson;
 import de.vsys.project.general.Request;
 
-/**
- * authors: Max, AJ, Jona, Mike
- *
- * In dieser Klasse werden JSON Objekte erstellt
- * Sie ist dazu da, um Anfragen zu machen und direkt eine Antwort zu erhalten
- * Dazu wird die JSON Datei durchgegangen und Bundesländer sowie Neuinfektionen ausgegeben
- * Der Request selbst wird aus dem General Ordner und der Request.java Klasse geholt
- */
 public class ReaderRKI {
+    /*
+    @author: Maximilian Meyer, Jona Heinzer
+    This class reads the json data from the robert koch institut into a data object
+    */
     Gson gson;
     Request request;
 

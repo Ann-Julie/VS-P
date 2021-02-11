@@ -1,19 +1,24 @@
-package de.vsys.project.general;
+package de.vsys.project.general.data;
 
-public class ReturnData {
+public class AllData {
+    /*
+    @author: Mike Witkowski
+    This class is the template for the data which we return to the user
+     */
+
     private int newInfectionsLastTwentyFourHours;
     private int totalInfections;
-    private double increaseLastTwentyFourHours;
+    private int increaseLastTwentyFourHours;
     private double averageIncreaseLastNDays;
-    private int targetTotalInfection;
-    private int forecastNecessaryLockdownDays;
-    private int incidenceValueLastSevenDays;
+    private double targetTotalInfection;
+    private double forecastNecessaryLockdownDays;
+    private double incidenceValueLastSevenDays;
 
-    public int getIncidenceValueLastSevenDays() {
+    public double getIncidenceValueLastSevenDays() {
         return incidenceValueLastSevenDays;
     }
 
-    public void setIncidenceValueLastSevenDays(int incidenceValueLastSevenDays) {
+    public void setIncidenceValueLastSevenDays(double incidenceValueLastSevenDays) {
         this.incidenceValueLastSevenDays = incidenceValueLastSevenDays;
     }
 
@@ -37,7 +42,7 @@ public class ReturnData {
         return increaseLastTwentyFourHours;
     }
 
-    public void setIncreaseLastTwentyFourHours(double increaseLastTwentyFourHours) {
+    public void setIncreaseLastTwentyFourHours(int increaseLastTwentyFourHours) {
         this.increaseLastTwentyFourHours = increaseLastTwentyFourHours;
     }
 
@@ -49,19 +54,19 @@ public class ReturnData {
         this.averageIncreaseLastNDays = averageIncreaseLastNDays;
     }
 
-    public int getTargetTotalInfection() {
+    public double getTargetTotalInfection() {
         return targetTotalInfection;
     }
 
-    public void setTargetTotalInfection(int targetTotalInfection) {
+    public void setTargetTotalInfection(double targetTotalInfection) {
         this.targetTotalInfection = targetTotalInfection;
     }
 
-    public int getForecastNecessaryLockdownDays() {
+    public double getForecastNecessaryLockdownDays() {
         return forecastNecessaryLockdownDays;
     }
 
-    public void setForecastNecessaryLockdownDays(int forecastNecessaryLockdownDays) {
+    public void setForecastNecessaryLockdownDays(double forecastNecessaryLockdownDays) {
         this.forecastNecessaryLockdownDays = forecastNecessaryLockdownDays;
     }
 }

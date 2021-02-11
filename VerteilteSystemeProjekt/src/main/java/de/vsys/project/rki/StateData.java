@@ -1,12 +1,11 @@
 package de.vsys.project.rki;
 
-/**
- * authors: Max, AJ, Jona
- *
- * In dieser Klasse werden Variablen festgelegt mit gettern und settern
- * für das Bundesland, die Fälle und die entsprechende ID
- */
+
 public class StateData {
+    /*
+    @author: Maximilian Meyer, Jona Heinzer
+    This class is the template for the json data from the Robert Koch Institut
+    */
     double cases7_bl_per_100k;
     String LAN_ew_GEN;
 

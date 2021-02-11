@@ -1,19 +1,20 @@
 package de.vsys.project.jhu;
 
-import de.vsys.project.general.MathOperations;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class JohnHopkinsUniversityData {
+    /*
+    @author: Mike Witkowski, David Rohrschneider, Jona Heinzer
+    This class calculates the data from the john hopkins university
+    */
     private Reader reader;
-    MathOperations mathOperations;
 
     public JohnHopkinsUniversityData() {
         reader = new Reader();
-        mathOperations = new MathOperations();
     }
 
+    //This metho checks the new infections from the last twenty four hours
     public int checkNewInfectionsFromLastTwentyFourHours() {
         Data countryData = reader.readData();
         int today = countryData.getData()[countryData.getData().length-1].getConfirmed();
@@ -22,6 +23,7 @@ public class JohnHopkinsUniversityData {
         return result;
     }
 
+    //This method checks the actual total infections
     public int checkTotalInfections() {
         Data countryData = reader.readData();
         int confirmed = countryData.getData()[countryData.getData().length-1].getConfirmed();
@@ -32,20 +34,19 @@ public class JohnHopkinsUniversityData {
     }
 
     //This method calculates the average increase of the confirmed numbers in the last 24 h
-    public double checkIncreaseFromLastTwentyFoursHours() {
+    public int checkIncreaseFromLastTwentyFourHours() {
         Data countryData = reader.readData();
-        double confirmedYesterday = (countryData.getData()[(countryData.getData().length) - 1].getConfirmed());
-        double deathsYesterday = (countryData.getData()[(countryData.getData().length) - 1].getDeaths());
-        double recoveredYesterday = (countryData.getData()[(countryData.getData().length) - 1].getRecovered());
-        double totalYesterday = confirmedYesterday - deathsYesterday - recoveredYesterday;
+        int confirmedYesterday = (countryData.getData()[(countryData.getData().length) - 1].getConfirmed());
+        int deathsYesterday = (countryData.getData()[(countryData.getData().length) - 1].getDeaths());
+        int recoveredYesterday = (countryData.getData()[(countryData.getData().length) - 1].getRecovered());
+        int totalYesterday = confirmedYesterday - deathsYesterday - recoveredYesterday;
 
-        double confirmedDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getConfirmed());
-        double deathsDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getDeaths());
-        double recoveredDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getRecovered());
-        double totalDayBeforeYesterday = confirmedDayBeforeYesterday - deathsDayBeforeYesterday - recoveredDayBeforeYesterday;
+        int confirmedDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getConfirmed());
+        int deathsDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getDeaths());
+        int recoveredDayBeforeYesterday = (countryData.getData()[(countryData.getData().length) - 2].getRecovered());
+        int totalDayBeforeYesterday = confirmedDayBeforeYesterday - deathsDayBeforeYesterday - recoveredDayBeforeYesterday;
 
-        double result = totalYesterday - totalDayBeforeYesterday;
-        return result;
+        return totalYesterday - totalDayBeforeYesterday;
     }
 
     //This method calculates the average increase of the confirmed numbers in the time specified time period
@@ -69,13 +70,7 @@ public class JohnHopkinsUniversityData {
         result = result / days;
         return result;
     }
-
-
-    public static void main(String[] args) {
-        JohnHopkinsUniversityData johnHopkinsUniversityData = new JohnHopkinsUniversityData();
-        System.out.println(johnHopkinsUniversityData.checkTotalInfections());
-    }
-
+    
 
 
 

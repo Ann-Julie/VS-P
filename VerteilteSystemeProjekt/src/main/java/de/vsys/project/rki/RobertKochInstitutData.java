@@ -10,9 +10,9 @@ import static java.util.Arrays.asList;
 
 public class RobertKochInstitutData {
     /*
-    @author: Mike Witkowski
-    description...
-     */
+    @author: Maximilian Meyer, Jona Heinzer
+    This class uses information collected from the RKI to calculate the required values.
+    */
     private ReaderRKI readerRKI;
     private DataRKI data;
     private JohnHopkinsUniversityData jhuData;
@@ -50,6 +50,7 @@ public class RobertKochInstitutData {
         return caseIncreaseNewTimeframe / caseIncreaseOldTimeframe;
     }
 
+    //Kann die Methode raus? Bzw alle alten ?
     public double targetTotalNumberOfInfections(double rTarget) {
         int activeCasesYesterday = jhuData.getCountryDataByDaysSince(1).getActive();
         double rCurrent = getRValueJhu(7);
@@ -93,9 +94,43 @@ public class RobertKochInstitutData {
         return (activeCasesYesterday - targetTotalNumberOfInfections(rTarget)) / avgNewCasesDecrease;
     }
 
+
+    public double calculateIncidenceValueLastSevenDays(){
+        DataRKI stateData = readerRKI.readData();
+        double result = 0;
+        double value = 0;
+        for(int i = 0; i <= stateData.getData().length - 1; i++){
+            value = stateData.getData()[stateData.getData().length - i - 1].getAttributes().getCases7_bl_per_100k();
+            result += value;
+        }
+        result = (result/stateData.getData().length);
+
+        return result;
+    }
+
+
+    public double calculateTargetNumberOfTotalInfection(){
+        int totalInfection = jhuData.checkTotalInfections();
+        double incidenceValue = calculateIncidenceValueLastSevenDays();
+        int targetIncidence = 35;
+        return (totalInfection / incidenceValue) * targetIncidence;
+    }
+
+
+    public double calculateRequiredDaysForLockdown(){
+        int totalInfection = jhuData.checkTotalInfections();
+        double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();
+        double averageDecrease = (jhuData.checkIncreaseFromLastTwentyFourHours()) * -1;
+        return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
+    }
+
+
     //andere Methoden reinmachen
     public static void main(String[] args) {
         RobertKochInstitutData rkiData = new RobertKochInstitutData();
-        System.out.println(rkiData.daysUntilRTargetIsReached(7, 0.7));
+    //    System.out.println(rkiData.daysUntilRTargetIsReached(7, 0.7));
+        System.out.println("7-Tage Inzidenzwert: " + rkiData.calculateIncidenceValueLastSevenDays());
+        System.out.println("Zielgesamtinfektion: " + rkiData.calculateTargetNumberOfTotalInfection());
+        System.out.println("Lockdown-Resttage: "   + rkiData.calculateRequiredDaysForLockdown());
     }
 }

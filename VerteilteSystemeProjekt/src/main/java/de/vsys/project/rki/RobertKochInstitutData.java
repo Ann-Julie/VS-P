@@ -50,6 +50,7 @@ public class RobertKochInstitutData {
         return caseIncreaseNewTimeframe / caseIncreaseOldTimeframe;
     }
 
+    //Kann die Methode raus? Bzw alle alten ?
     public double targetTotalNumberOfInfections(double rTarget) {
         int activeCasesYesterday = jhuData.getCountryDataByDaysSince(1).getActive();
         double rCurrent = getRValueJhu(7);
@@ -93,7 +94,7 @@ public class RobertKochInstitutData {
         return (activeCasesYesterday - targetTotalNumberOfInfections(rTarget)) / avgNewCasesDecrease;
     }
 
-    //@author Maximilian Meyer
+
     public double calculateIncidenceValueLastSevenDays(){
         DataRKI stateData = readerRKI.readData();
         double result = 0;
@@ -106,7 +107,7 @@ public class RobertKochInstitutData {
         return result;
     }
 
-    //@author Maximilian Meyer
+
     public double calculateTargetNumberOfTotalInfection(){
         int totalInfection = jhuData.checkTotalInfections();
         double incidenceValue = calculateIncidenceValueLastSevenDays();
@@ -114,7 +115,7 @@ public class RobertKochInstitutData {
         return (totalInfection / incidenceValue) * targetIncidence;
     }
 
-    //@author Maximilian Meyer
+
     public double calculateRequiredDaysForLockdown(){
         int totalInfection = jhuData.checkTotalInfections();
         double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();
@@ -129,6 +130,6 @@ public class RobertKochInstitutData {
     //    System.out.println(rkiData.daysUntilRTargetIsReached(7, 0.7));
         System.out.println("7-Tage Inzidenzwert: " + rkiData.calculateIncidenceValueLastSevenDays());
         System.out.println("Zielgesamtinfektion: " + rkiData.calculateTargetNumberOfTotalInfection());
-        System.out.println("Lockdown-Resttage: " + rkiData.calculateRequiredDaysForLockdown());
+        System.out.println("Lockdown-Resttage: "   + rkiData.calculateRequiredDaysForLockdown());
     }
 }

@@ -18,6 +18,10 @@ public class CountryData {
         return confirmed;
     }
 
+    public int getActive() {
+        return confirmed - deaths - recovered;
+    }
+
     public int getDeaths() {
         return deaths;
     }

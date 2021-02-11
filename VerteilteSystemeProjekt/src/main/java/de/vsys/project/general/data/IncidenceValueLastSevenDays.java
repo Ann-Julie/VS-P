@@ -11,7 +11,7 @@ public class IncidenceValueLastSevenDays {
         return incidenceValueLastSevenDays;
     }
 
-    public void setIncidenceValueLastSevenDays(int incidenceValueLastSevenDays) {
+    public void setIncidenceValueLastSevenDays(double incidenceValueLastSevenDays) {
         this.incidenceValueLastSevenDays = incidenceValueLastSevenDays;
     }
 }

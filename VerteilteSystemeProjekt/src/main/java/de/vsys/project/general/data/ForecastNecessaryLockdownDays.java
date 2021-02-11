@@ -11,7 +11,7 @@ public class ForecastNecessaryLockdownDays {
         return forecastNecessaryLockdownDays;
     }
 
-    public void setForecastNecessaryLockdownDays(int forecastNecessaryLockdownDays) {
+    public void setForecastNecessaryLockdownDays(double forecastNecessaryLockdownDays) {
         this.forecastNecessaryLockdownDays = forecastNecessaryLockdownDays;
     }
 }

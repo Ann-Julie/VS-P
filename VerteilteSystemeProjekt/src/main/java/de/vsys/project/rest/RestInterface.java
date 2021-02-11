@@ -1,9 +1,7 @@
 package de.vsys.project.rest;
 
 import com.google.gson.Gson;
-import de.vsys.project.general.data.AllData;
-import de.vsys.project.general.data.NewInfectionsLastTwentyFourHours;
-import de.vsys.project.general.data.TotalInfections;
+import de.vsys.project.general.data.*;
 import de.vsys.project.jhu.JohnHopkinsUniversityData;
 import de.vsys.project.rki.RobertKochInstitutData;
 import static spark.Spark.*;
@@ -41,6 +39,27 @@ public class RestInterface {
             //returns new infections from last twenty four hours as json
             NewInfectionsLastTwentyFourHours returnData = new NewInfectionsLastTwentyFourHours();
             returnData.setNewInfectionsLastTwentyFourHours(johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
+            return gson.toJson(returnData);
+        });
+
+        get("targettotalinfection", (request, response)->{
+            //returns target of the total infection number as json
+            TargetTotalInfection returnData = new TargetTotalInfection();
+            returnData.setTargetTotalInfection(robertKochInstitutData.calculateTargetNumberOfTotalInfection());
+            return gson.toJson(returnData);
+        });
+
+        get("forecastnecessarylockdowndays", (request, response)->{
+            //returns target of the total infection number as json
+            ForecastNecessaryLockdownDays returnData = new ForecastNecessaryLockdownDays();
+            returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
+            return gson.toJson(returnData);
+        });
+
+        get("incidencevaluelastsevendays", (request, response)->{
+            //returns target of the total infection number as json
+            IncidenceValueLastSevenDays returnData = new IncidenceValueLastSevenDays();
+            returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());
             return gson.toJson(returnData);
         });
     }

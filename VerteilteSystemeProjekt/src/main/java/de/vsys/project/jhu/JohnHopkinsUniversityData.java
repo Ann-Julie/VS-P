@@ -1,17 +1,13 @@
 package de.vsys.project.jhu;
 
-import de.vsys.project.general.MathOperations;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class JohnHopkinsUniversityData {
     private Reader reader;
-    MathOperations mathOperations;
 
     public JohnHopkinsUniversityData() {
         reader = new Reader();
-        mathOperations = new MathOperations();
     }
 
     public int checkNewInfectionsFromLastTwentyFourHours() {

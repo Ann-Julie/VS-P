@@ -55,6 +55,31 @@ public class JohnHopkinsUniversityData {
         return result;
     }
 
+
+    public static void main(String[] args) {
+        JohnHopkinsUniversityData johnHopkinsUniversityData = new JohnHopkinsUniversityData();
+        System.out.println(johnHopkinsUniversityData.checkTotalInfections());
+    }
+
+
+
+
+    // Diese Methode bekommt ein Array von CountryData. Jeder Eintrag beinhaltet aktuelle Fallzahlen. Dabei enthält der Letzte Eintrag bei Ausführung
+    // immer die Werte vom Vortag. Die Variable "daysSince" gibt dabei an, von welchem Tag die Werte ausgegeben werden. Ist daysSince == 1, werden die
+    // Werte vom Vortag ausgegeben. Bei daysSince == 2 werden die Werte von vor zwei Tagen ausgegeben. Es wird eine Exception geworfen, wenn
+    // unzulässige Werte für daysSince eingegeben werden. Da Werte vom aktuellen Tag (oder später) nicht verfügbar sind, sind Werte <= 0 verboten.
+    // Auch Werte, die auf Daten vor Beginn der Aufzeichnung zugreifen sind verboten.
+    private CountryData getCountryDataByDaysSinceUsingLocalData(CountryData[] countryDataArray, int daysSince) throws IndexOutOfBoundsException {
+        if (daysSince <= 0 || daysSince > countryDataArray.length) {
+            throw new IndexOutOfBoundsException("Value of daysSince must not be <= 0 or > number of entries in countryData.");
+        }
+        return countryDataArray[countryDataArray.length - daysSince];
+    }
+    public CountryData getCountryDataByDaysSince(int daysSince) throws IndexOutOfBoundsException {
+        CountryData[] countryDataArray = reader.readData().getData();
+        return getCountryDataByDaysSinceUsingLocalData(countryDataArray, daysSince);
+    }
+
     // Nimmt eine Liste von daysSince, fragt die passenden Fallzahlen (CountryData) ab und gibt diese in einer identisch sortierten Liste zurück.
     public List<CountryData> getCountryDataForDaysSinceList(List<Integer> daysSinceList) throws IndexOutOfBoundsException {
         CountryData[] countryDataArray = reader.readData().getData();
@@ -71,30 +96,6 @@ public class JohnHopkinsUniversityData {
 
         return countryDataList;
     }
-
-    // Diese Methode bekommt ein Array von CountryData. Jeder Eintrag beinhaltet aktuelle Fallzahlen. Dabei enthält der Letzte Eintrag bei Ausführung
-    // immer die Werte vom Vortag. Die Variable "daysSince" gibt dabei an, von welchem Tag die Werte ausgegeben werden. Ist daysSince == 1, werden die
-    // Werte vom Vortag ausgegeben. Bei daysSince == 2 werden die Werte von vor zwei Tagen ausgegeben. Es wird eine Exception geworfen, wenn
-    // unzulässige Werte für daysSince eingegeben werden. Da Werte vom aktuellen Tag (oder später) nicht verfügbar sind, sind Werte <= 0 verboten.
-    // Auch Werte, die auf Daten vor Beginn der Aufzeichnung zugreifen sind verboten.
-    private CountryData getCountryDataByDaysSinceUsingLocalData(CountryData[] countryDataArray, int daysSince) throws IndexOutOfBoundsException {
-        if (daysSince <= 0 || daysSince > countryDataArray.length) {
-            throw new IndexOutOfBoundsException("Value of daysSince must not be <= 0 or > number of entries in countryData.");
-        }
-        return countryDataArray[countryDataArray.length - daysSince];
-    }
-
-    public CountryData getCountryDataByDaysSince(int daysSince) throws IndexOutOfBoundsException {
-        CountryData[] countryDataArray = reader.readData().getData();
-        return getCountryDataByDaysSinceUsingLocalData(countryDataArray, daysSince);
-    }
-
-
-    public static void main(String[] args) {
-        JohnHopkinsUniversityData johnHopkinsUniversityData = new JohnHopkinsUniversityData();
-        System.out.println(johnHopkinsUniversityData.checkTotalInfections());
-    }
-
 
 }
 

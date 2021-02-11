@@ -2,6 +2,7 @@ package de.vsys.project.rest;
 
 import com.google.gson.Gson;
 import de.vsys.project.general.data.AllData;
+import de.vsys.project.general.data.NewInfectionsLastTwentyFourHours;
 import de.vsys.project.general.data.TotalInfections;
 import de.vsys.project.jhu.JohnHopkinsUniversityData;
 import de.vsys.project.rki.RobertKochInstitutData;
@@ -9,7 +10,7 @@ import static spark.Spark.*;
 
 public class RestInterface {
     /*
-    @author: Mike Witkowski
+    @author: Mike Witkowski, David Rohrschneider
     This class implements the rest interface with different routes for the different values
      */
     public static void main(String[] args){
@@ -36,9 +37,9 @@ public class RestInterface {
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
             return gson.toJson(returnData);
         });
-        get("infectionsfromlasttwentyfourhours", (request, response)->{
+        get("newinfectionsfromlasttwentyfourhours", (request, response)->{
             //returns new infections from last twenty four hours as json
-            AllData returnData = new AllData();
+            NewInfectionsLastTwentyFourHours returnData = new NewInfectionsLastTwentyFourHours();
             returnData.setNewInfectionsLastTwentyFourHours(johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
             return gson.toJson(returnData);
         });

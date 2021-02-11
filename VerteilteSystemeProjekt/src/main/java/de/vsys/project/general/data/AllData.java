@@ -1,4 +1,4 @@
-package de.vsys.project.general;
+package de.vsys.project.general.data;
 
 public class AllData {
     /*

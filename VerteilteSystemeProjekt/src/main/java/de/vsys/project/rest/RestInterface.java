@@ -1,8 +1,8 @@
 package de.vsys.project.rest;
 
 import com.google.gson.Gson;
-import de.vsys.project.general.AllData;
-import de.vsys.project.general.TotalInfections;
+import de.vsys.project.general.data.AllData;
+import de.vsys.project.general.data.TotalInfections;
 import de.vsys.project.jhu.JohnHopkinsUniversityData;
 import de.vsys.project.rki.RobertKochInstitutData;
 import static spark.Spark.*;

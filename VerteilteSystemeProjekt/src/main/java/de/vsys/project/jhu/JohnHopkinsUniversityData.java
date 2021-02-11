@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JohnHopkinsUniversityData {
+    /*
+    @author: Mike Witkowski, David Rohrschneider, Jona Heinzer
+    This class calculates the data from the john hopkins university
+    */
     private Reader reader;
 
     public JohnHopkinsUniversityData() {
         reader = new Reader();
     }
 
+    //This metho checks the new infections from the last twenty four hours
     public int checkNewInfectionsFromLastTwentyFourHours() {
         Data countryData = reader.readData();
         int today = countryData.getData()[countryData.getData().length-1].getConfirmed();
@@ -18,6 +23,7 @@ public class JohnHopkinsUniversityData {
         return result;
     }
 
+    //This method checks the actual total infections
     public int checkTotalInfections() {
         Data countryData = reader.readData();
         int confirmed = countryData.getData()[countryData.getData().length-1].getConfirmed();

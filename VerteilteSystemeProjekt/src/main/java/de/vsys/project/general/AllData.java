@@ -1,6 +1,11 @@
 package de.vsys.project.general;
 
-public class ReturnData {
+public class AllData {
+    /*
+    @author: Mike Witkowski
+    This class is the template for the data which we return to the user
+     */
+
     private int newInfectionsLastTwentyFourHours;
     private int totalInfections;
     private double increaseLastTwentyFourHours;

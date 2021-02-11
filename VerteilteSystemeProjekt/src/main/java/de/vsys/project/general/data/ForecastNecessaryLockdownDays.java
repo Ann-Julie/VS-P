@@ -5,9 +5,9 @@ public class ForecastNecessaryLockdownDays {
     @author: David Rohrschneider
     This class is the template for the data which we return to the user
      */
-    private int forecastNecessaryLockdownDays;
+    private double forecastNecessaryLockdownDays;
 
-    public int getForecastNecessaryLockdownDays() {
+    public double getForecastNecessaryLockdownDays() {
         return forecastNecessaryLockdownDays;
     }
 

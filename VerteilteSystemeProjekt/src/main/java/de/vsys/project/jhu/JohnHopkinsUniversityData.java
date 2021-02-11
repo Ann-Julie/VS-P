@@ -34,7 +34,7 @@ public class JohnHopkinsUniversityData {
     }
 
     //This method calculates the average increase of the confirmed numbers in the last 24 h
-    public int checkIncreaseFromLastTwentyFoursHours() {
+    public int checkIncreaseFromLastTwentyFourHours() {
         Data countryData = reader.readData();
         int confirmedYesterday = (countryData.getData()[(countryData.getData().length) - 1].getConfirmed());
         int deathsYesterday = (countryData.getData()[(countryData.getData().length) - 1].getDeaths());

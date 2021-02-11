@@ -17,14 +17,14 @@ public class RestInterface {
         RobertKochInstitutData robertKochInstitutData = new RobertKochInstitutData();
         Gson gson = new Gson();
 
-        get("allData", (request, response)->{
+        get("alldata", (request, response)->{
             //returns all data as json
             AllData returnData = new AllData();
             //Set John Hopkins data
             returnData.setNewInfectionsLastTwentyFourHours(johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
             returnData.setAverageIncreaseLastNDays(johnHopkinsUniversityData.checkAverageIncreaseFromLastNDays(7));
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
-            returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFoursHours());
+            returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
             //Set Robert Koch data
 
 

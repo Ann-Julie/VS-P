@@ -104,6 +104,7 @@ public class RobertKochInstitutData {
             result += value;
         }
         result = (result/stateData.getData().length);
+
         return result;
     }
 

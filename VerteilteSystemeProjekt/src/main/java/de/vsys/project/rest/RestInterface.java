@@ -33,5 +33,11 @@ public class RestInterface {
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
             return gson.toJson(returnData);
         });
+        get("infectionsfromlasttwentyfourhours", (request, response)->{
+            //returns new infections from last twenty four hours as json
+            ReturnData returnData = new ReturnData();
+            returnData.setNewInfectionsLastTwentyFourHours(johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
+            return gson.toJson(returnData);
+        });
     }
 }

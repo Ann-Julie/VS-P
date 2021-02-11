@@ -93,9 +93,23 @@ public class RobertKochInstitutData {
         return (activeCasesYesterday - targetTotalNumberOfInfections(rTarget)) / avgNewCasesDecrease;
     }
 
+    public double calculateIncidenceValueLastSevenDays(){
+        DataRKI stateData = readerRKI.readData();
+        double result = 0;
+        double value = 0;
+        System.out.println(stateData.getData().length);
+        for(int i = 0; i <= stateData.getData().length - 1; i++){
+            value = stateData.getData()[stateData.getData().length - i - 1].getAttributes().getCases7_bl_per_100k();
+            result += value;
+        }
+        result = (result/stateData.getData().length);
+        return result;
+    }
+
     //andere Methoden reinmachen
     public static void main(String[] args) {
         RobertKochInstitutData rkiData = new RobertKochInstitutData();
-        System.out.println(rkiData.daysUntilRTargetIsReached(7, 0.7));
+    //    System.out.println(rkiData.daysUntilRTargetIsReached(7, 0.7));
+        System.out.println(rkiData.calculateIncidenceValueLastSevenDays());
     }
 }

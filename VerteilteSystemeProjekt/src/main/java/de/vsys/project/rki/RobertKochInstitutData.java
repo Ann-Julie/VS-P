@@ -6,7 +6,7 @@ import de.vsys.project.jhu.JohnHopkinsUniversityData;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.common.primitives.Ints.asList;
+import static java.util.Arrays.asList;
 
 public class RobertKochInstitutData {
     /*

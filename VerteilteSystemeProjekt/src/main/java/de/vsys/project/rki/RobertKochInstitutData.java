@@ -118,7 +118,7 @@ public class RobertKochInstitutData {
     public double calculateRequiredDaysForLockdown(){
         int totalInfection = jhuData.checkTotalInfections();
         double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();
-        double averageDecrease = (jhuData.checkIncreaseFromLastTwentyFoursHours()) * -1;
+        double averageDecrease = (jhuData.checkIncreaseFromLastTwentyFourHours()) * -1;
         return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
     }
 

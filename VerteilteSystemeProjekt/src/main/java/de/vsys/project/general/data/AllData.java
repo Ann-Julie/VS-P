@@ -18,7 +18,7 @@ public class AllData {
         return incidenceValueLastSevenDays;
     }
 
-    public void setIncidenceValueLastSevenDays(double incidenceValueLastSevenDays) {
+    public void setIncidenceValueLastSevenDays(int incidenceValueLastSevenDays) {
         this.incidenceValueLastSevenDays = incidenceValueLastSevenDays;
     }
 
@@ -58,7 +58,7 @@ public class AllData {
         return targetTotalInfection;
     }
 
-    public void setTargetTotalInfection(double targetTotalInfection) {
+    public void setTargetTotalInfection(int targetTotalInfection) {
         this.targetTotalInfection = targetTotalInfection;
     }
 
@@ -66,7 +66,7 @@ public class AllData {
         return forecastNecessaryLockdownDays;
     }
 
-    public void setForecastNecessaryLockdownDays(double forecastNecessaryLockdownDays) {
+    public void setForecastNecessaryLockdownDays(int forecastNecessaryLockdownDays) {
         this.forecastNecessaryLockdownDays = forecastNecessaryLockdownDays;
     }
 }

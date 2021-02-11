@@ -11,7 +11,7 @@ public class TargetTotalInfection {
         return targetTotalInfection;
     }
 
-    public void setTargetTotalInfection(double targetTotalInfection) {
+    public void setTargetTotalInfection(int targetTotalInfection) {
         this.targetTotalInfection = targetTotalInfection;
     }
 }

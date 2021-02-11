@@ -25,9 +25,6 @@ public class RestInterface {
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
             returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
             //Set Robert Koch data
-            returnData.setTargetTotalInfection(robertKochInstitutData.calculateTargetNumberOfTotalInfection());
-            returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
-            returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());
 
            return gson.toJson(returnData);
         });
@@ -62,6 +59,12 @@ public class RestInterface {
             //returns target of the total infection number as json
             IncidenceValueLastSevenDays returnData = new IncidenceValueLastSevenDays();
             returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());
+            return gson.toJson(returnData);
+        });
+        get("averageincreaselastndays/:n", (request, response)->{
+            //returns target of the total infection number as json
+            AverageIncreaseLastNDays returnData = new AverageIncreaseLastNDays();
+            returnData.setAverageIncreaseLastNDays(johnHopkinsUniversityData.checkAverageIncreaseFromLastNDays(Integer.parseInt(request.params(":n"))));
             return gson.toJson(returnData);
         });
     }

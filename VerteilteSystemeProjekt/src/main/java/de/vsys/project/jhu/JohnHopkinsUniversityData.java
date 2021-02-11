@@ -16,13 +16,18 @@ public class JohnHopkinsUniversityData {
 
     public int checkNewInfectionsFromLastTwentyFourHours() {
         Data countryData = reader.readData();
-        int result = countryData.getData()[(countryData.getData().length) - 1].getConfirmed() - countryData.getData()[(countryData.getData().length) - 2].getConfirmed();
+        int today = countryData.getData()[countryData.getData().length-1].getConfirmed();
+        int yesterday = countryData.getData()[countryData.getData().length-2].getConfirmed();
+        int result = today - yesterday;
         return result;
     }
 
     public int checkTotalInfections() {
         Data countryData = reader.readData();
-        int result = countryData.getData()[countryData.getData().length - 1].getConfirmed();
+        int confirmed = countryData.getData()[countryData.getData().length-1].getConfirmed();
+        int recovered = countryData.getData()[countryData.getData().length-1].getRecovered();
+        int deaths = countryData.getData()[countryData.getData().length-1].getDeaths();
+        int result = confirmed - recovered - deaths;
         return result;
     }
 
@@ -87,7 +92,7 @@ public class JohnHopkinsUniversityData {
 
     public static void main(String[] args) {
         JohnHopkinsUniversityData johnHopkinsUniversityData = new JohnHopkinsUniversityData();
-        System.out.println(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFoursHours());
+        System.out.println(johnHopkinsUniversityData.checkTotalInfections());
     }
 
 

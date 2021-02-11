@@ -62,10 +62,18 @@ public class RestInterface {
             return gson.toJson(returnData);
         });
         get("averageincreaselastndays/:n", (request, response)->{
-            //returns target of the total infection number as json
+            //returns the average increase from the last n days as json
             AverageIncreaseLastNDays returnData = new AverageIncreaseLastNDays();
             returnData.setAverageIncreaseLastNDays(johnHopkinsUniversityData.checkAverageIncreaseFromLastNDays(Integer.parseInt(request.params(":n"))));
             return gson.toJson(returnData);
         });
+        get("increaselasttwentyfourhours", (request, response)->{
+            //returns the increase of the last twenty four hours as json
+            IncreaseLastTwentyFourHours returnData = new IncreaseLastTwentyFourHours();
+            returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
+            return gson.toJson(returnData);
+        });
+
+
     }
 }

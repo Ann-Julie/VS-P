@@ -11,6 +11,10 @@ import javax.xml.ws.Endpoint;
 
 @WebService
 public class SoapServer {
+    /*
+    @author: Jona Heinzer
+    This class implements the soap server with different routes for different data.
+    */
 
     JohnHopkinsUniversityData jhiData = new JohnHopkinsUniversityData();
     RobertKochInstitutData rkiData = new RobertKochInstitutData();

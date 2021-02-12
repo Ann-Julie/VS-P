@@ -29,7 +29,7 @@ public class RobertKochInstitutData {
     public DataRKI getData() {
         return data;
     }
-
+/*
     private double getAbsoluteCaseIncrease(CountryData older, CountryData newer) {
         int newCases = newer.getConfirmed() - older.getConfirmed();
         return newCases;
@@ -93,7 +93,7 @@ public class RobertKochInstitutData {
         int activeCasesYesterday = countryDataList.get(countryDataList.size() - 1).getActive();
         return (activeCasesYesterday - targetTotalNumberOfInfections(rTarget)) / avgNewCasesDecrease;
     }
-
+*/
     //this method calculates the incidence value for the last seven days
     public double calculateIncidenceValueLastSevenDays(){
         DataRKI stateData = readerRKI.readData();

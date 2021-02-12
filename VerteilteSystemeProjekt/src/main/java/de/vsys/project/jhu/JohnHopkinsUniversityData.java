@@ -73,7 +73,7 @@ public class JohnHopkinsUniversityData {
     
 
 
-
+/*
     // Diese Methode bekommt ein Array von CountryData. Jeder Eintrag beinhaltet aktuelle Fallzahlen. Dabei enthält der Letzte Eintrag bei Ausführung
     // immer die Werte vom Vortag. Die Variable "daysSince" gibt dabei an, von welchem Tag die Werte ausgegeben werden. Ist daysSince == 1, werden die
     // Werte vom Vortag ausgegeben. Bei daysSince == 2 werden die Werte von vor zwei Tagen ausgegeben. Es wird eine Exception geworfen, wenn
@@ -105,7 +105,7 @@ public class JohnHopkinsUniversityData {
         }
 
         return countryDataList;
-    }
+    } */
 
 }
 

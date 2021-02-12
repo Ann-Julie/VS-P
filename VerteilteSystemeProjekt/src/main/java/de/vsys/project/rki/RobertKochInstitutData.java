@@ -94,7 +94,7 @@ public class RobertKochInstitutData {
         return (activeCasesYesterday - targetTotalNumberOfInfections(rTarget)) / avgNewCasesDecrease;
     }
 
-
+    //this method calculates the incidence value for the last seven days
     public double calculateIncidenceValueLastSevenDays(){
         DataRKI stateData = readerRKI.readData();
         double result = 0;
@@ -108,7 +108,7 @@ public class RobertKochInstitutData {
         return result;
     }
 
-
+    //this method calculates the target number of total infections
     public double calculateTargetNumberOfTotalInfection(){
         int totalInfection = jhuData.checkTotalInfections();
         double incidenceValue = calculateIncidenceValueLastSevenDays();
@@ -116,7 +116,7 @@ public class RobertKochInstitutData {
         return (totalInfection / incidenceValue) * targetIncidence;
     }
 
-
+    //this method gives a forecast for the necessary lockdown days
     public double calculateRequiredDaysForLockdown(){
         int totalInfection = jhuData.checkTotalInfections();
         double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();

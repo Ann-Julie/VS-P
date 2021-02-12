@@ -1,4 +1,4 @@
-package de.vsys.project.soap;
+/*package de.vsys.project.soap;
 
 import client.*;
 import client.SoapServer;
@@ -18,3 +18,4 @@ public class SoapClient {
         System.out.println(port.getTotalInfections());
     }
 }
+*/

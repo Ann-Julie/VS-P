@@ -3,7 +3,7 @@ package de.vsys.project.rki;
 
 public class StateData {
     /*
-    @author: Maximilian Meyer, Jona Heinzer
+    @author: Maximilian Meyer
     This class is the template for the json data from the Robert Koch Institut
     */
     double cases7_bl_per_100k;

@@ -6,7 +6,7 @@ import de.vsys.project.general.Request;
 
 public class ReaderRKI {
     /*
-    @author: Maximilian Meyer, Jona Heinzer
+    @author: Maximilian Meyer
     This class reads the json data from the robert koch institut into a data object
     */
     Gson gson;

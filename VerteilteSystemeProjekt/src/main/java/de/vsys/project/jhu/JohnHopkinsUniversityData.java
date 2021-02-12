@@ -14,7 +14,7 @@ public class JohnHopkinsUniversityData {
         reader = new Reader();
     }
 
-    //This metho checks the new infections from the last twenty four hours
+    //This method checks the new infections from the last twenty four hours
     public int checkNewInfectionsFromLastTwentyFourHours() {
         Data countryData = reader.readData();
         int today = countryData.getData()[countryData.getData().length-1].getConfirmed();

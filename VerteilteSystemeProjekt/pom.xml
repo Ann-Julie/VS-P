@@ -73,7 +73,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>de.vsys.project.soap.SoapServer</mainClass>
+                            <mainClass>de.vsys.project.soap.SoapInterface</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

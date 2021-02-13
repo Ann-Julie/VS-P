@@ -10,7 +10,7 @@ import javax.jws.WebService;
 import javax.xml.ws.Endpoint;
 
 @WebService
-public class SoapServer {
+public class SoapInterface {
     /*
     @author: Jona Heinzer
     This class implements the soap server with different routes for different data.
@@ -94,6 +94,6 @@ public class SoapServer {
 
 
     public static void main(String[] args) {
-        Endpoint.publish("http://167.99.252.170:4568/coronaData", new SoapServer());
+        Endpoint.publish("http://167.99.252.170:4568/coronaData", new SoapInterface());
     }
 }

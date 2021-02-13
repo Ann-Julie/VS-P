@@ -57,10 +57,13 @@ public class RobertKochInstitutData {
         int totalInfection = jhuData.checkTotalInfections();
         double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();
         double averageDecrease = (jhuData.checkAverageIncreaseFromLastNDays(days) * -1 );
+        double result;
         if(averageDecrease < 0){
-            return 9999;
-        }else{
-        return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
+            result = 9999;
         }
+        else{
+            result = (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
+        }
+        return result;
     }
 }

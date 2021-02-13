@@ -52,6 +52,9 @@ public class JohnHopkinsUniversityData {
     //This method calculates the average increase of the confirmed numbers in the time specified time period
     public double checkAverageIncreaseFromLastNDays(int days) {
         Data countryData = reader.readData();
+        if(days >= countryData.getData().length) {
+            days = countryData.getData().length - 1;
+        }
         double result = 0;
         for (int i = 1; i <= days; i++) {
             double confirmedCurrent = countryData.getData()[(countryData.getData().length) - i].getConfirmed();
@@ -59,9 +62,9 @@ public class JohnHopkinsUniversityData {
             double recoveredCurrent = countryData.getData()[(countryData.getData().length) - i].getRecovered();
             double totalCurrent = confirmedCurrent - deathsCurrent - recoveredCurrent;
 
-            double confirmedDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i+1)].getConfirmed();
-            double deathsDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i+1)].getDeaths();
-            double recoveredDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i+1)].getRecovered();
+            double confirmedDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i + 1)].getConfirmed();
+            double deathsDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i + 1)].getDeaths();
+            double recoveredDayBeforeCurrent = countryData.getData()[(countryData.getData().length) - (i + 1)].getRecovered();
             double totalDayBeforeCurrent = confirmedDayBeforeCurrent - deathsDayBeforeCurrent - recoveredDayBeforeCurrent;
 
             result += totalCurrent - totalDayBeforeCurrent;
@@ -69,6 +72,8 @@ public class JohnHopkinsUniversityData {
 
         result = result / days;
         return result;
+
+
     }
 }
 

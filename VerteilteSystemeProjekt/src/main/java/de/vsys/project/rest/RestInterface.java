@@ -27,7 +27,7 @@ public class RestInterface {
             //Set Robert Koch data
             returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());
             returnData.setTargetTotalInfection(robertKochInstitutData.calculateTargetNumberOfTotalInfection());
-            returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
+            returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown(7));
            return gson.toJson(returnData);
         });
         get("totalinfections", (request, response)->{
@@ -50,10 +50,10 @@ public class RestInterface {
             return gson.toJson(returnData);
         });
 
-        get("forecastnecessarylockdowndays", (request, response)->{
+        get("forecastnecessarylockdowndays/:n", (request, response)->{
             //returns target of the total infection number as json
             ForecastNecessaryLockdownDays returnData = new ForecastNecessaryLockdownDays();
-            returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
+            returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown(Integer.parseInt(request.params(":n"))));
             return gson.toJson(returnData);
         });
 

@@ -62,7 +62,7 @@ public class AllData {
         this.targetTotalInfection = targetTotalInfection;
     }
 
-    public double getForecastNecessaryLockdownDays() {
+    public double getForecastNecessaryLockdownDays(int days) {
         return forecastNecessaryLockdownDays;
     }
 

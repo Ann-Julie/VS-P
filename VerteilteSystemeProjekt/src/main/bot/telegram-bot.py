@@ -17,7 +17,9 @@ sendURL = "http://api.telegram.org/bot" + vSysBotToken + "/sendMessage"
 # url für lokal host für die api später
 portNumber = 4567
 
-getURL = "http://localhost:" + str(portNumber)
+# get URL ist dann später für den Server, also mit lokal host austauschen
+# getURL = "http://localhost:" + str(portNumber)
+getURL = "http://167.99.252.170:" + str(portNumber)
 
 def send_message(chatId, message):
     # die Ergebnisse aus den Variablen unten senden
@@ -27,6 +29,11 @@ def send_message(chatId, message):
 wir wollen mit dem bot diese rest api wrappen
 dafür schreiben wir für jeden Zugriffspunkt eine Methode, die den jeweiligen Wert ausgibt
 """
+
+def get_all_data():
+    endPoint = "/alldata"
+    return requests.get(getURL + endPoint)
+
 def get_average_increase_last_n_days(days):
     # über commands soll eine Abfrage erscheinen, nach Tagen
     #

@@ -17,10 +17,6 @@ public class RobertKochInstitutData {
         jhuData = new JohnHopkinsUniversityData();
     }
 
-    public DataRKI getData() {
-        return data;
-    }
-
     //this method calculates the incidence value for the last seven days
     public double calculateIncidenceValueLastSevenDays(){
         DataRKI stateData = readerRKI.readData();

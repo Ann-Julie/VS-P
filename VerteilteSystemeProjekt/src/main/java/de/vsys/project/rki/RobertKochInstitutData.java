@@ -1,11 +1,10 @@
 package de.vsys.project.rki;
 
+
 import de.vsys.project.jhu.CountryData;
 import de.vsys.project.jhu.JohnHopkinsUniversityData;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static java.util.Arrays.asList;
 
 public class RobertKochInstitutData {
@@ -40,7 +39,6 @@ public class RobertKochInstitutData {
             result += value;
         }
         result = (result/stateData.getData().length);
-
         return result;
     }
 
@@ -59,7 +57,7 @@ public class RobertKochInstitutData {
         double averageDecrease = (jhuData.checkAverageIncreaseFromLastNDays(days) * -1 );
         if(averageDecrease < 0){
             return 9999;
-        }else{
+        } else {
         return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
         }
     }

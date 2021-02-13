@@ -1,5 +1,6 @@
 package de.vsys.project.jhu;
 
+
 public class CountryData {
     /*
     @author: Mike Witkowski

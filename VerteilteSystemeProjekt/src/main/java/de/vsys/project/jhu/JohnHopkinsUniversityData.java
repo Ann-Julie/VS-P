@@ -1,5 +1,6 @@
 package de.vsys.project.jhu;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +8,7 @@ public class JohnHopkinsUniversityData {
     /*
     @author: Mike Witkowski, David Rohrschneider, Jona Heinzer
     This class calculates the data from the john hopkins university
-    */
+     */
     private Reader reader;
 
     public JohnHopkinsUniversityData() {
@@ -69,11 +70,8 @@ public class JohnHopkinsUniversityData {
 
             result += totalCurrent - totalDayBeforeCurrent;
         }
-
         result = result / days;
         return result;
-
-
     }
 }
 

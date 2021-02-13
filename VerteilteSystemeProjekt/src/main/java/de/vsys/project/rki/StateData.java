@@ -9,7 +9,6 @@ public class StateData {
     double cases7_bl_per_100k;
     String LAN_ew_GEN;
 
-
     public String getLAN_ew_GEN() {
         return LAN_ew_GEN;
     }
@@ -17,5 +16,4 @@ public class StateData {
     public double getCases7_bl_per_100k() {
         return cases7_bl_per_100k;
     }
-
 }

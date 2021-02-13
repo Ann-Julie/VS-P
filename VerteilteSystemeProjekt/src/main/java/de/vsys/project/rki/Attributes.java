@@ -1,5 +1,6 @@
 package de.vsys.project.rki;
 
+
 public class Attributes {
     /*
     @author: Maximilian Meyer

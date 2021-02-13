@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class RKITest {
     /*
     @author: David Rohrschneider
-    This class tests the methods from the JohnHopkinsUniversityData class
+    This class tests the methods from the RobertKochInstitutData class
     For testing the methods, you have to calcute the values manually
      */
     RobertKochInstitutData robertKochInstitutData = new RobertKochInstitutData();

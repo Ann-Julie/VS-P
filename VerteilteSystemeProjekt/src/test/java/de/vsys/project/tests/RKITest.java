@@ -1,7 +1,6 @@
 package de.vsys.project.tests;
 
 
-import de.vsys.project.jhu.JohnHopkinsUniversityData;
 import de.vsys.project.rki.RobertKochInstitutData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

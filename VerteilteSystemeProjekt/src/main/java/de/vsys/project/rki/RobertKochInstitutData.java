@@ -1,11 +1,7 @@
 package de.vsys.project.rki;
 
 
-import de.vsys.project.jhu.CountryData;
 import de.vsys.project.jhu.JohnHopkinsUniversityData;
-import java.util.ArrayList;
-import java.util.List;
-import static java.util.Arrays.asList;
 
 public class RobertKochInstitutData {
     /*
@@ -19,10 +15,6 @@ public class RobertKochInstitutData {
     public RobertKochInstitutData() {
         readerRKI = new ReaderRKI();
         jhuData = new JohnHopkinsUniversityData();
-    }
-
-    public ReaderRKI getReaderRKI() {
-        return readerRKI;
     }
 
     public DataRKI getData() {

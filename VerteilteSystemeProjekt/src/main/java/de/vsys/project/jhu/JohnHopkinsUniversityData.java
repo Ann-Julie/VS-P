@@ -1,9 +1,6 @@
 package de.vsys.project.jhu;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class JohnHopkinsUniversityData {
     /*
     @author: Mike Witkowski, David Rohrschneider, Jona Heinzer

@@ -25,6 +25,7 @@ def send_message(chatId, message):
     # die Ergebnisse aus den Variablen unten senden
     requests.post(sendURL + "?chat_id=" + str(chatId) + "&text=" + message)
 
+
 """
 wir wollen mit dem bot diese rest api wrappen
 dafür schreiben wir für jeden Zugriffspunkt eine Methode, die den jeweiligen Wert ausgibt
@@ -41,13 +42,13 @@ def get_average_increase_last_n_days(days):
     return requests.get(getURL + endPoint + str(days))
 
 
-#send_message(vSysChatId, "Moin Meister")
+send_message(vSysChatId, str(get_average_increase_last_n_days(5)))
 # so bekommen wir nur das request Objekt und müssen jetzt noch die
 # Daten daraus herausholen
 r = get_average_increase_last_n_days(5)
 print(r)
 print(r.text)
-
+get_average_increase_last_n_days(5)
 """ 
 ab dem Zeitpunkt an dem es einen Server gibt, muss einfach nur die URL in getURL angepasst werden, feddich
 in den Chat mit send_Message einfügen, also nur überlegen wie Text von  A nach B kommt, jedesMal wenn Zugriffspunkt 

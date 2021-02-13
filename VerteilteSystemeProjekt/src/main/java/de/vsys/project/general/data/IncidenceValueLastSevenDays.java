@@ -1,5 +1,6 @@
 package de.vsys.project.general.data;
 
+
 public class IncidenceValueLastSevenDays {
     /*
     @author: David Rohrschneider
@@ -13,6 +14,5 @@ public class IncidenceValueLastSevenDays {
 
     public void setIncidenceValueLastSevenDays(double incidenceValueLastSevenDays) {
         this.incidenceValueLastSevenDays = incidenceValueLastSevenDays;
-        
     }
 }

@@ -1,5 +1,6 @@
 package de.vsys.project.general.data;
 
+
 public class AverageIncreaseLastNDays {
     /*
     @author: David Rohrschneider

@@ -1,5 +1,6 @@
 package de.vsys.project.general.data;
 
+
 public class NewInfectionsLastTwentyFourHours {
     /*
     @author: David Rohrschneider

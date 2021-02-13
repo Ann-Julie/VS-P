@@ -1,5 +1,6 @@
 package de.vsys.project.general.data;
 
+
 public class AllData {
     /*
     @author: Mike Witkowski
@@ -21,6 +22,7 @@ public class AllData {
         this.incidenceValueLastSevenDays = incidenceValueLastSevenDays;
     }
 
+
     public int getNewInfectionsLastTwentyFourHours() {
         return newInfectionsLastTwentyFourHours;
     }
@@ -28,6 +30,7 @@ public class AllData {
     public void setNewInfectionsLastTwentyFourHours(int newInfectionsLastTwentyFourHours) {
         this.newInfectionsLastTwentyFourHours = newInfectionsLastTwentyFourHours;
     }
+
 
     public int getTotalInfections() {
         return totalInfections;
@@ -37,6 +40,7 @@ public class AllData {
         this.totalInfections = totalInfections;
     }
 
+
     public double getIncreaseLastTwentyFourHours() {
         return increaseLastTwentyFourHours;
     }
@@ -44,6 +48,7 @@ public class AllData {
     public void setIncreaseLastTwentyFourHours(int increaseLastTwentyFourHours) {
         this.increaseLastTwentyFourHours = increaseLastTwentyFourHours;
     }
+
 
     public double getAverageIncreaseLastNDays() {
         return averageIncreaseLastNDays;
@@ -53,6 +58,7 @@ public class AllData {
         this.averageIncreaseLastNDays = averageIncreaseLastNDays;
     }
 
+
     public double getTargetTotalInfection() {
         return targetTotalInfection;
     }
@@ -60,6 +66,7 @@ public class AllData {
     public void setTargetTotalInfection(double targetTotalInfection) {
         this.targetTotalInfection = targetTotalInfection;
     }
+
 
     public double getForecastNecessaryLockdownDays() {
         return forecastNecessaryLockdownDays;

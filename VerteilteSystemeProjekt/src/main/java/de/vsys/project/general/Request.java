@@ -20,14 +20,13 @@ public class Request {
         client = HttpClient.newHttpClient();
         request = HttpRequest.newBuilder().GET().header("accept","application/json").uri(URI.create(url)).build();
     }
+
     public String sendRequest(){
         try{
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
-
         }catch (Exception e){
             e.printStackTrace();
         }
         return response.body();
     }
-
 }

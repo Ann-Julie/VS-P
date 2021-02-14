@@ -38,15 +38,17 @@ public class RobertKochInstitutData {
         return (totalInfection / incidenceValue) * targetIncidence;
     }
 
-    //this method gives a forecast for the necessary lockdown days
-    public double calculateRequiredDaysForLockdown(int days){
+    //this method gives a forecast for the necessary lockdown days, uses the average decrease of the last 14 days
+    public double calculateRequiredDaysForLockdown(){
         int totalInfection = jhuData.checkTotalInfections();
         double targetNumberOfTotalInfection = calculateTargetNumberOfTotalInfection();
-        double averageDecrease = (jhuData.checkAverageIncreaseFromLastNDays(days) * -1 );
+        double averageDecrease = (jhuData.checkAverageIncreaseFromLastNDays(14) * -1 );
+        double result;
         if(averageDecrease < 0){
-            return 9999;
+            result =  9999;
         } else {
-        return (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
+            result = (totalInfection - targetNumberOfTotalInfection)/averageDecrease;
         }
+        return result;
     }
 }

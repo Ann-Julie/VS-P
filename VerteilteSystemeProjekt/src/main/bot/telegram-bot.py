@@ -79,7 +79,7 @@ def total_infections(update, context):
 
 def new_infections_from_last_twenty_four_hours(update, context):
     update.message.reply_text('Target total infections: ' + send_message(update.effective_message.chat_id,
-                                                                         get_new_infections_from_last_twentyFour_hours().text))
+                                                                         get_new_infections_from_last_twenty_four_hours().text))
 
 
 def target_total_infection(update, context):

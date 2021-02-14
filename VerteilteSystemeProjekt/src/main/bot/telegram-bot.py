@@ -15,11 +15,6 @@ from telegram import Update
 from telegram.ext import (
     Updater,
     CommandHandler,
-    PollAnswerHandler,
-    PollHandler,
-    MessageHandler,
-    Filters,
-    CallbackContext,
 )
 
 vSysBotToken = "1668868793:AAF5cLabcsGgRHK8ovTbTnMuJ7nMzQH-oGQ"

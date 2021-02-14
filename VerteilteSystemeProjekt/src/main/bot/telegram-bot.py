@@ -47,12 +47,10 @@ def start(update, context):
 
 def help(update, context):
     # message when /help is typed in
-    update.message.reply_text('Auswahl: '
-                              '/alldata  , /totalinfections ,'
-                              '/newinfectionsfromlast24hours , /targettotalinfections'
-                              '/forecastnecessarylockdowndays , /incidencevaluelastsevendays ',
-                              '/averageincreaselastndays , /increaselast24hours'
-                              )
+    update.message.reply_text('Auswahl: ' + '/alldata  , /totalinfections , /newinfectionsfromlast24hours , '
+                                            '/targettotalinfections, /forecastnecessarylockdowndays , '
+                                            '/incidencevaluelastsevendays , /averageincreaselastndays , '
+                                            '/increaselast24hours')
 
 
 def send_buttons(chatId, message, buttonJSON):

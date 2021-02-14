@@ -1,5 +1,6 @@
 package de.vsys.project.rest;
 
+
 import com.google.gson.Gson;
 import de.vsys.project.general.data.*;
 import de.vsys.project.jhu.JohnHopkinsUniversityData;
@@ -19,63 +20,65 @@ public class RestInterface {
         get("alldata", (request, response)->{
             //returns all data as json
             AllData returnData = new AllData();
-            //Set John Hopkins data
+            //set John Hopkins data
             returnData.setNewInfectionsLastTwentyFourHours(johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
             returnData.setAverageIncreaseLastNDays(johnHopkinsUniversityData.checkAverageIncreaseFromLastNDays(7));
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
             returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
-            //Set Robert Koch data
+            //set Robert Koch data
             returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());
             returnData.setTargetTotalInfection(robertKochInstitutData.calculateTargetNumberOfTotalInfection());
             returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
            return gson.toJson(returnData);
         });
+
+        //returns the totalinfections as json
         get("totalinfections", (request, response)->{
-            //returns the totalinfections as json
             TotalInfections returnData = new TotalInfections();
             returnData.setTotalInfections(johnHopkinsUniversityData.checkTotalInfections());
             return gson.toJson(returnData);
         });
+
+        //returns new infections from last twenty four hours as json
         get("newinfectionsfromlasttwentyfourhours", (request, response)->{
-            //returns new infections from last twenty four hours as json
             NewInfectionsLastTwentyFourHours returnData = new NewInfectionsLastTwentyFourHours();
             returnData.setNewInfectionsLastTwentyFourHours(johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
             return gson.toJson(returnData);
         });
 
+        //returns target of the total infection number as json
         get("targettotalinfection", (request, response)->{
-            //returns target of the total infection number as json
             TargetTotalInfection returnData = new TargetTotalInfection();
             returnData.setTargetTotalInfection(robertKochInstitutData.calculateTargetNumberOfTotalInfection());
             return gson.toJson(returnData);
         });
 
+        //returns the forecast of necessary lockdown days as json
         get("forecastnecessarylockdowndays", (request, response)->{
-            //returns target of the total infection number as json
             ForecastNecessaryLockdownDays returnData = new ForecastNecessaryLockdownDays();
             returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
             return gson.toJson(returnData);
         });
 
+        //returns the incidence value of the last seven days as json
         get("incidencevaluelastsevendays", (request, response)->{
-            //returns target of the total infection number as json
             IncidenceValueLastSevenDays returnData = new IncidenceValueLastSevenDays();
             returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());
             return gson.toJson(returnData);
         });
+
+        //returns the average increase from the last n days as json
         get("averageincreaselastndays/:n", (request, response)->{
-            //returns the average increase from the last n days as json
             AverageIncreaseLastNDays returnData = new AverageIncreaseLastNDays();
             returnData.setAverageIncreaseLastNDays(johnHopkinsUniversityData.checkAverageIncreaseFromLastNDays(Integer.parseInt(request.params(":n"))));
             return gson.toJson(returnData);
         });
+
+        //returns the increase of the last twenty four hours as json
         get("increaselasttwentyfourhours", (request, response)->{
-            //returns the increase of the last twenty four hours as json
             IncreaseLastTwentyFourHours returnData = new IncreaseLastTwentyFourHours();
             returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
             return gson.toJson(returnData);
         });
-
-
     }
 }

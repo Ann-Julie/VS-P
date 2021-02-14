@@ -10,6 +10,7 @@ dafür schreiben wir für jeden Zugriffspunkt eine Methode, die den jeweiligen W
 """
 
 import requests
+import json
 from telegram import Update
 from telegram.ext import (
     Updater,
@@ -30,21 +31,42 @@ portNumber = 4567
 
 # getURL = "http://localhost:" + str(portNumber)
 getURL = "http://167.99.252.170:" + str(portNumber)
-#bot_chat_id = ["message"]["chat"]["id"]
+# userChatId = ["message"]["chat"]["id"]
+
+
+# buttons die von /start an angezeigt werden und mit denen die gewünschten Funktionen ausgewählt werden können
+button_all_data = {'text': 'All data', 'callback_data': 'All data'}
+button_total_infections = {'text': 'Total infections', 'callback_data': 'All data'}
+# eigentlich dictionary, wird als Array aufgelistet
+button_array = {'inline_keyboard': [[button_all_data, button_total_infections]]}
+
 
 def start(update, context):
     # message when bot chat gets started
-    update.message.reply_text('Um eine vollständige Liste aller Befehle zu erhalten, '
-                                                                    '/help eingeben')
+    update.message.reply_text('Bitte gewünschte Anfrage auswählen (Funktionen werden mit /help erläutert): ')
+
 
 def help(update, context):
-        # message when /help is typed in
-        update.message.reply_text('Mögliche Befehle: '
-                                  '/alldata')
+    # message when /help is typed in
+    update.message.reply_text('Mit  Auswahl des "All data" Buttons etc')
+    update.message.reply_text(send_message(update.effective_message.chat_id, get_all_data().text))
 
-#def all_data(update: Update, context: CallbackContext) -> int:
+
+def send_buttons(chatId, message, buttonJSON):
+    send_text = requests.post(sendURL + "?chat_id=" + str(chatId) + "&reply_markup" + buttonJSON + "&text=" + message)
+
+
+# prüfen ob unsere einkommende Nachricht ein callback von einem Button ist
+def is_callback(dict):
+    # callback_query ist der zweite Schlüssel in result
+    if ['callback_query'] in dict:
+        return True
+
+
+def all_data(update, context):
     # method get_all_data() is called
-    #update.message.reply_text("Alle Daten: ")
+    update.message.reply_text('Alle Daten: ')
+    update.message.reply_text(send_message(update.effective_message.chat_id, get_all_data().text))
 
 
 # method needed to send messages to the group chat
@@ -96,27 +118,24 @@ def get_increase_last_twentyFour_hours():
 
 # send_message(vSysChatId, str(get_average_increase_last_n_days(5)).text)
 # send_message(vSysChatId, "test")
-
-# print(get_all_data().text)
 # send_message(vSysChatId, get_all_data().text)
 # send_message(vSysChatId, get_increase_last_twentyFour_hours().text)
 
-# on different commands - answer in Telegram
 def main():
-    """Start the bot."""
-    # Create the Updater and pass it your bot's token.
-    # Make sure to set use_context=True to use the new context based callbacks
-    updater = Updater("1668868793:AAF5cLabcsGgRHK8ovTbTnMuJ7nMzQH-oGQ", use_context=True)
+    # pass Updater our bot token
+    updater = Updater("1668868793:AAF5cLabcsGgRHK8ovTbTnMuJ7nMzQH-oGQ")
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
+
+    send_buttons(vSysChatId, " ", json.dumps(button_array))
 
     # set up commands
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("help", help))
 
     # commands for functionality of covid numbers
-   # dp.add_handler(CommandHandler("all_data"), all_data)
+    dp.add_handler(CommandHandler("alldata", all_data))
 
     # Start the Bot
     updater.start_polling()

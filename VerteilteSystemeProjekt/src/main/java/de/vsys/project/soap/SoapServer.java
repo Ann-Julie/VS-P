@@ -32,7 +32,7 @@ public class SoapServer {
         //set Robert Koch data
         returnData.setIncidenceValueLastSevenDays(rkiData.calculateIncidenceValueLastSevenDays());
         returnData.setTargetTotalInfection(rkiData.calculateTargetNumberOfTotalInfection());
-        returnData.setForecastNecessaryLockdownDays(rkiData.calculateRequiredDaysForLockdown(7));
+        returnData.setForecastNecessaryLockdownDays(rkiData.calculateRequiredDaysForLockdown());
         return gson.toJson(returnData);
     }
 
@@ -62,9 +62,9 @@ public class SoapServer {
 
     //returns target of the total infection number as json
     @WebMethod
-    public String getForecastForNecessaryLockdownDays(int n) {
+    public String getForecastForNecessaryLockdownDays() {
         ForecastNecessaryLockdownDays returnData = new ForecastNecessaryLockdownDays();
-        returnData.setForecastNecessaryLockdownDays(rkiData.calculateRequiredDaysForLockdown(n));
+        returnData.setForecastNecessaryLockdownDays(rkiData.calculateRequiredDaysForLockdown());
         return gson.toJson(returnData);
     }
 

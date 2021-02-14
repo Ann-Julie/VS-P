@@ -53,14 +53,14 @@ public class RestInterface {
             return gson.toJson(returnData);
         });
 
-        //returns target of the total infection number as json
+        //returns the forecast of necessary lockdown days as json
         get("forecastnecessarylockdowndays", (request, response)->{
             ForecastNecessaryLockdownDays returnData = new ForecastNecessaryLockdownDays();
             returnData.setForecastNecessaryLockdownDays(robertKochInstitutData.calculateRequiredDaysForLockdown());
             return gson.toJson(returnData);
         });
 
-        //returns target of the total infection number as json
+        //returns the incidence value of the last seven days as json
         get("incidencevaluelastsevendays", (request, response)->{
             IncidenceValueLastSevenDays returnData = new IncidenceValueLastSevenDays();
             returnData.setIncidenceValueLastSevenDays(robertKochInstitutData.calculateIncidenceValueLastSevenDays());

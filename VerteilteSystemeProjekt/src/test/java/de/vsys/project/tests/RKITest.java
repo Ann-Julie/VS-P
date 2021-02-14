@@ -16,7 +16,7 @@ public class RKITest {
     //This method tests the method that returns the required days left for lockdown
     @Test
     public void testCalculateRequiredDaysForLockdown(){
-        Assertions.assertEquals(20.826848031668494, robertKochInstitutData.calculateRequiredDaysForLockdown(7));
+        Assertions.assertEquals(20.826848031668494, robertKochInstitutData.calculateRequiredDaysForLockdown());
     }
 
     //This method tests the method that returns target number of total infections

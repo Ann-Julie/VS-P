@@ -31,8 +31,6 @@ portNumber = 4567
 
 # getURL = "http://localhost:" + str(portNumber)
 getURL = "http://167.99.252.170:" + str(portNumber)
-# userChatId = ["message"]["chat"]["id"]
-
 
 # buttons die von /start an angezeigt werden und mit denen die gewünschten Funktionen ausgewählt werden können
 button_all_data = {'text': 'All data', 'callback_data': 'All data'}
@@ -43,13 +41,18 @@ button_array = {'inline_keyboard': [[button_all_data, button_total_infections]]}
 
 def start(update, context):
     # message when bot chat gets started
-    update.message.reply_text('Bitte gewünschte Anfrage auswählen (Funktionen werden mit /help erläutert): ')
+    update.message.reply_text(
+        'Bitte gewünschte Anfrage auswählen. Möglichkeiten und Funktionen werden mit /help erläutert: ')
 
 
 def help(update, context):
     # message when /help is typed in
-    update.message.reply_text('Mit  Auswahl des "All data" Buttons etc')
-    update.message.reply_text(send_message(update.effective_message.chat_id, get_all_data().text))
+    update.message.reply_text('Auswahl: '
+                              '/alldata  , /totalinfections ,'
+                              '/newinfectionsfromlast24hours , /targettotalinfections'
+                              '/forecastnecessarylockdowndays , /incidencevaluelastsevendays ',
+                              '/averageincreaselastndays , /increaselast24hours'
+                              )
 
 
 def send_buttons(chatId, message, buttonJSON):
@@ -64,9 +67,50 @@ def is_callback(dict):
 
 
 def all_data(update, context):
-    # method get_all_data() is called
-    update.message.reply_text('Alle Daten: ')
-    update.message.reply_text(send_message(update.effective_message.chat_id, get_all_data().text))
+    update.message.reply_text('All data: ' + send_message(update.effective_message.chat_id, get_all_data().text))
+    # update.message.reply_text(send_message(update.effective_message.chat_id, get_all_data().text))
+
+
+def total_infections(update, context):
+    update.message.reply_text(
+        'Total Infections: ' + send_message(update.effective_message.chat_id, get_total_infections().text))
+    # update.message.reply_text(send_message(update.effective_message.chat_id, get_all_data().text))
+
+
+def new_infections_from_last_twenty_four_hours(update, context):
+    update.message.reply_text('Target total infections: ' + send_message(update.effective_message.chat_id,
+                                                                         get_new_infections_from_last_twentyFour_hours().text))
+
+
+def target_total_infection(update, context):
+    update.message.reply_text('Target total infections: ' + send_message(update.effective_message.chat_id,
+                                                                         get_target_total_infection().text))
+
+
+def forecast_necessary_lockdown_days(update, context):
+    update.message.reply_text('Forecast lockdown days: ' + send_message(update.effective_message.chat_id,
+                                                                        get_forecast_necessary_lockdown_days().text))
+
+
+def incidence_value_last_seven_days(update, context):
+    update.message.reply_text('Incidence value last 7 days: ' + send_message(update.effective_message.chat_id,
+
+                                                                             get_incidence_value_last_seven_days().text))
+
+
+# Logik weiter machen morgen
+def average_increase_last_n_days(update, context):
+    update.message.reply_text('Type in number of days between x to x days: ')
+    # hier dann auf eingabe warten und prüfen ob Zahl eingegeben wurde und im Fenster zwischen x und x liegt
+
+    # hier dann eine variable übergeben, die den user input ausgibt
+    update.message.reply_text(send_message(update.effective_message.chat_id,
+                                           get_average_increase_last_n_days().text))
+
+
+def increase_last_twenty_four_hours(update, context):
+    update.message.reply_text('Increase last 24 hours: ' + send_message(update.effective_message.chat_id,
+                                                                        get_increase_last_twentyFour_hours().text))
 
 
 # method needed to send messages to the group chat
@@ -87,7 +131,7 @@ def get_total_infections():
     return requests.get(getURL + endPoint)
 
 
-def get_new_infections_from_last_twentyFour_hours():
+def get_new_infections_from_last_twenty_four_hours():
     endPoint = "/newinfectionsfromlasttwentyfourhours"
     return requests.get(getURL + endPoint)
 
@@ -111,15 +155,11 @@ def get_average_increase_last_n_days(days):
     endPoint = "/averageincreaselastndays/"
     return requests.get(getURL + endPoint + str(days))
 
+
 def get_increase_last_twentyFour_hours():
     endPoint = "/increaselasttwentyfourhours"
     return requests.get(getURL + endPoint)
 
-
-# send_message(vSysChatId, str(get_average_increase_last_n_days(5)).text)
-# send_message(vSysChatId, "test")
-# send_message(vSysChatId, get_all_data().text)
-# send_message(vSysChatId, get_increase_last_twentyFour_hours().text)
 
 def main():
     # pass Updater our bot token
@@ -128,7 +168,7 @@ def main():
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
 
-    send_buttons(vSysChatId, " ", json.dumps(button_array))
+    # send_buttons(vSysChatId, " ", json.dumps(button_array))
 
     # set up commands
     dp.add_handler(CommandHandler("start", start))
@@ -136,6 +176,13 @@ def main():
 
     # commands for functionality of covid numbers
     dp.add_handler(CommandHandler("alldata", all_data))
+    dp.add_handler(CommandHandler("totalinfections", total_infections))
+    dp.add_handler(CommandHandler("targettotalinfections", target_total_infection))
+    dp.add_handler(CommandHandler("forecastnecessarylockdowndays", forecast_necessary_lockdown_days))
+    dp.add_handler(CommandHandler("incidencevaluelastsevendays", incidence_value_last_seven_days))
+    dp.add_handler(CommandHandler("newinfectionsfromlast24hours", new_infections_from_last_twenty_four_hours))
+    dp.add_handler(CommandHandler("averageincreaselastndays", average_increase_last_n_days))
+    dp.add_handler(CommandHandler("increaselast24hours", increase_last_twenty_four_hours))
 
     # Start the Bot
     updater.start_polling()
@@ -148,15 +195,10 @@ if __name__ == '__main__':
     main()
 
 """ 
-todo morgen: Commands anschauen für Interaktion mit User in App und ganz viele if else ;) 
+TODO:
+Buttons einbinden optional
 json parser python 
 
 poll benötigt um die Anzahl der Tage später anzugeben
 
 """
-
-
-
-
-
-

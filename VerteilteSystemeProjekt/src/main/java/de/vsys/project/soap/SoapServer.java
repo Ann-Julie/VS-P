@@ -60,7 +60,7 @@ public class SoapServer {
         return gson.toJson(returnData);
     }
 
-    //returns target of the total infection number as json
+    //returns the forecast of necessary lockdown days as json
     @WebMethod
     public String getForecastForNecessaryLockdownDays() {
         ForecastNecessaryLockdownDays returnData = new ForecastNecessaryLockdownDays();
@@ -68,7 +68,7 @@ public class SoapServer {
         return gson.toJson(returnData);
     }
 
-    //returns target of the total infection number as json
+    //returns the incidence value of the last seven days as json
     @WebMethod
     public String getIncidenceValueLastSevenDays() {
         IncidenceValueLastSevenDays returnData = new IncidenceValueLastSevenDays();

@@ -3,7 +3,7 @@ package de.vsys.project.jhu;
 
 public class JohnHopkinsUniversityData {
     /*
-    @author: Mike Witkowski, David Rohrschneider, Jona Heinzer
+    @author: Mike Witkowski, David Rohrschneider
     This class calculates the data from the john hopkins university
      */
     private Reader reader;

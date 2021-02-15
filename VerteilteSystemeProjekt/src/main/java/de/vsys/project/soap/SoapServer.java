@@ -20,6 +20,7 @@ public class SoapServer {
     RobertKochInstitutData rkiData = new RobertKochInstitutData();
     Gson gson = new Gson();
 
+    //returns all important information as json
     @WebMethod
     public String getAllData() {
         //returns all data as json

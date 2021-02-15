@@ -9,7 +9,7 @@ public class RobertKochInstitutData {
     This class uses information collected from the RKI to calculate the required values.
     */
     private ReaderRKI readerRKI;
-    private DataRKI data;
+    private DataRKI stateData;
     private JohnHopkinsUniversityData jhuData;
 
     public RobertKochInstitutData() {
@@ -19,7 +19,7 @@ public class RobertKochInstitutData {
 
     //this method calculates the incidence value for the last seven days
     public double calculateIncidenceValueLastSevenDays(){
-        DataRKI stateData = readerRKI.readData();
+        stateData = readerRKI.readData();
         double result = 0;
         double value = 0;
         for(int i = 0; i <= stateData.getData().length - 1; i++){

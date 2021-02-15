@@ -39,7 +39,7 @@ def help(update, context):
 def fetch_value_from_json(chatId, message, key):
     message_as_json = json.loads(message)
     json_value = message_as_json[key]
-    return str(abs(json_value))
+    return str(round(abs(json_value)))
 
 
 # alle Methoden aufrufen

@@ -13,12 +13,20 @@ import requests
 import json
 from telegram import Update
 from telegram.ext import (
-    Updater,
-    CommandHandler,
+    Updater, CommandHandler, MessageHandler, Filters, ConversationHandler,
 )
 
 vSysBotToken = "1668868793:AAF5cLabcsGgRHK8ovTbTnMuJ7nMzQH-oGQ"
 vSysChatId = "-507253319"
+
+# MessageHandler requestStati
+
+# messageRequestFlag = 0 invalidRequest
+# messageRequestFlag = 1 timeDurationRequested
+# messageRequestFlag = 2 whateverRequest1 (not implemented)
+# messageRequestFlag = 3 whateverRequest2 (not implemented)
+# messageRequestFlag = 4 ...
+messageRequestFlag = 0
 
 # to send messages to the bot, the token and group chat id are needed
 sendURL = "http://api.telegram.org/bot" + vSysBotToken + "/sendMessage"
@@ -48,10 +56,11 @@ def help(update, context):
                                             '/increaselast24hours')
 
 
+# buttons
 def send_buttons(chatId, message, buttonJSON):
     send_text = requests.post(sendURL + "?chat_id=" + str(chatId) + "&reply_markup" + buttonJSON + "&text=" + message)
 
-
+# buttons
 # prüfen ob unsere einkommende Nachricht ein callback von einem Button ist
 def is_callback(dict):
     # callback_query ist der zweite Schlüssel in result
@@ -93,12 +102,38 @@ def incidence_value_last_seven_days(update, context):
 
 # Logik weiter machen morgen
 def average_increase_last_n_days(update, context):
-    update.message.reply_text('Type in number of days between x to x days: ')
+    update.message.reply_text('Type in number of days between 2 to 90 days: ')
     # hier dann auf eingabe warten und prüfen ob Zahl eingegeben wurde und im Fenster zwischen x und x liegt
+    # update.message.reply_text(update.message.text)
+    global messageRequestFlag
+    messageRequestFlag = 1
 
-    # hier dann eine variable übergeben, die den user input ausgibt
-    update.message.reply_text(send_message(update.effective_message.chat_id,
-                                           get_average_increase_last_n_days().text))
+
+def get_user_input(update, context):
+   # context.bot.send_message(update.effective_message.chat_id, 'user input called.')
+
+    """
+    wenn zusätzliche Request typen hinzukommen, muss die if bedingung einfach zu einem switch statement erweitert werden
+    """
+    global messageRequestFlag
+
+    if messageRequestFlag == 1:
+        # context.bot.send_message(update.effective_message.chat_id, 'if condition triggered.')
+        user_input = update.message.text
+        if (2 <= int(user_input) <= 90):
+            # hier dann eine variable übergeben, die den user input ausgibt
+             update.message.reply_text(send_message(update.effective_message.chat_id,
+                                               get_average_increase_last_n_days(user_input).text))
+             # request wurde behandelt, flag reset
+             messageRequestFlag = 0
+        else:
+            update.message.reply_text('Try again with a number between 2 to 90 days.')
+
+
+def end_user_input(update, context):
+    update.message.reply_text('Please type in new command. See /help for command list')
+    return ConversationHandler.END
+
 
 
 def increase_last_twenty_four_hours(update, context):
@@ -155,13 +190,14 @@ def get_increase_last_twentyFour_hours():
 
 
 def main():
+
     # pass Updater our bot token
     updater = Updater("1668868793:AAF5cLabcsGgRHK8ovTbTnMuJ7nMzQH-oGQ")
 
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
 
-    # send_buttons(vSysChatId, " ", json.dumps(button_array))
+     # send_buttons(vSysChatId, " ", json.dumps(button_array))
 
     # set up commands
     dp.add_handler(CommandHandler("start", start))
@@ -176,6 +212,8 @@ def main():
     dp.add_handler(CommandHandler("newinfectionsfromlast24hours", new_infections_from_last_twenty_four_hours))
     dp.add_handler(CommandHandler("averageincreaselastndays", average_increase_last_n_days))
     dp.add_handler(CommandHandler("increaselast24hours", increase_last_twenty_four_hours))
+
+    dp.add_handler(MessageHandler(Filters.text, get_user_input))
 
     # Start the Bot
     updater.start_polling()

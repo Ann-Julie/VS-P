@@ -1,6 +1,10 @@
 # all text messages from bot in here
 
-startCommandText =  'Herzlich Willkommen. Möglichkeiten sowie Funktionen werden unter /help erläutert. '
+startCommandText = (
+""" 
+Herzlich Willkommen. Ich bin der VSys-CoV Bot! 
+Alle meine Funktionen finden Sie mit /help. 
+""")
 
 helpCommandText = (
 """ 

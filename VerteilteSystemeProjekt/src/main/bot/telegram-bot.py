@@ -97,7 +97,7 @@ def average_increase_last_n_days(update, context):
                                  'Geben Sie ein neues Intervall zwischen 2 bis 90 an oder beenden Sie den Abfrage Modus mit /cancel.')
 
     else:
-        update.message.reply_text('Bitte geben Sie eine Zahl zwischen 2 bis 90 an.')
+        update.message.reply_text('Dieser Bot gibt Werte für 2 bis 90 Tage an, bitte versuchen Sie es erneut oder beenden Sie den Abfrage Modus mit /cancel')
 
 
 def increase_last_twenty_four_hours(update, context):
@@ -164,7 +164,7 @@ def cancel_query_mode(update, context):
 
 
 def prompt_user_input(update, context):
-    update.message.reply_text('Please define a time interval between 2 to 90 days: ')
+    update.message.reply_text('Bitte geben Sie eine Zahl zwischen 2 bis 90 an: ')
     return timeDurationUserInput
 
 

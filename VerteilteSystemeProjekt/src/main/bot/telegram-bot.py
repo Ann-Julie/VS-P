@@ -5,6 +5,7 @@ available with a command list
 """
 
 import requests
+import bot_descriptions
 from telegram.ext import (
     Updater, CommandHandler, MessageHandler, Filters, ConversationHandler,
 )
@@ -35,28 +36,12 @@ getURL = "http://167.99.252.170:" + str(portNumber)
 def start(update, context):
     # message when bot chat gets started
     update.message.reply_text(
-        'Bitte gewünschte Anfrage auswählen. Möglichkeiten und Funktionen werden mit /help erläutert: ')
+       bot_descriptions.startCommandText)
 
 
 def help(update, context):
     # message when /help is typed in
-    update.message.reply_text("""
-                                Auswahl:
-                                Anzeige aller 
-                                Informationen:
-                                /alldata 
-                                Aktuelle
-                                Gesamtinfektion in 
-                                Deutschland:
-                                /totalinfections 
-                                
-                                /newinfectionslast24h
-                                /targettotalinfections
-                                /forecastlockdowndays
-                                /incidencevaluelast7days 
-                                /avgincreaselastndays
-                                /increaselast24hours
-                                """)
+    update.message.reply_text(bot_descriptions.helpCommandText)
 
 
 def all_data(update, context):
@@ -91,7 +76,6 @@ def incidence_value_last_seven_days(update, context):
                                                                              get_incidence_value_last_seven_days().text))
 
 
-# Logik weiter machen morgen
 def average_increase_last_n_days(update, context):
     update.message.reply_text('Type in number of days between 2 to 90 days: ')
     # hier dann auf eingabe warten und prüfen ob Zahl eingegeben wurde und im Fenster zwischen x und x liegt
@@ -192,13 +176,13 @@ def main():
 
     # commands for functionality of covid numbers
     dp.add_handler(CommandHandler("alldata", all_data))
-    dp.add_handler(CommandHandler("totalinfections", total_infections))
-    dp.add_handler(CommandHandler("targettotalinfections", target_total_infection))
-    dp.add_handler(CommandHandler("forecastlockdowndays", forecast_necessary_lockdown_days))
-    dp.add_handler(CommandHandler("incidencevaluelast7days", incidence_value_last_seven_days))
-    dp.add_handler(CommandHandler("newinfectionslast24h", new_infections_from_last_twenty_four_hours))
-    dp.add_handler(CommandHandler("avgincreaselastndays", average_increase_last_n_days))
-    dp.add_handler(CommandHandler("increaselast24hours", increase_last_twenty_four_hours))
+    dp.add_handler(CommandHandler("totalinfec", total_infections))
+    dp.add_handler(CommandHandler("targettotalinfec", target_total_infection))
+    dp.add_handler(CommandHandler("forecastlockdays", forecast_necessary_lockdown_days))
+    dp.add_handler(CommandHandler("incvallast7days", incidence_value_last_seven_days))
+    dp.add_handler(CommandHandler("newinfeclast24h", new_infections_from_last_twenty_four_hours))
+    dp.add_handler(CommandHandler("avgincrlastndays", average_increase_last_n_days))
+    dp.add_handler(CommandHandler("incrlast24h", increase_last_twenty_four_hours))
 
     dp.add_handler(MessageHandler(Filters.text, get_user_input))
 

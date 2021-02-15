@@ -1,6 +1,6 @@
 # all text messages from bot in here
 
-startCommandText =  'Hier gewünschte Anfrage auswählen. Möglichkeiten sowie Funktionen werden mit /help erläutert. '
+startCommandText =  'Herzlich Willkommen. Möglichkeiten sowie Funktionen werden unter /help erläutert. '
 
 helpCommandText = (
 """ 

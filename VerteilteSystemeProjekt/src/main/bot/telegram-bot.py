@@ -93,7 +93,6 @@ def average_increase_last_n_days(update, context):
     if (2 <= int(user_input) <= 90):
         update.message.reply_text("Durchschnittlicher Anstieg der letzten " + user_input + " Tage: " +
                                   fetch_value_from_json(update.effective_message.chat_id, get_average_increase_last_n_days(user_input).text, "averageIncreaseLastNDays"))
-        # context.bot.send_message(update.effective_message.chat_id, "hulu")
         context.bot.send_message(update.effective_message.chat_id,
                                  'Geben Sie ein neues Intervall zwischen 2 bis 90 an oder beenden Sie den Abfrage Modus mit /cancel.')
 
@@ -160,7 +159,7 @@ def get_increase_last_twentyFour_hours():
 
 
 def cancel_query_mode(update, context):
-    update.message.reply_text('Ending Average Case Increase query mode.')
+    update.message.reply_text('Ende des Abfrage Modus des durchschnittlichen Anstiegs der ausgewählten Tage.')
     return ConversationHandler.END
 
 

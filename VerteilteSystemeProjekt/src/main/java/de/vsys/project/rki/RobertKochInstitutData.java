@@ -21,12 +21,14 @@ public class RobertKochInstitutData {
     public double calculateIncidenceValueLastSevenDays(){
         stateData = readerRKI.readData();
         double result = 0;
-        double value = 0;
+        double valueOfNewInfections = 0;
+        double population = 0;
         for(int i = 0; i <= stateData.getData().length - 1; i++){
-            value = stateData.getData()[stateData.getData().length - i - 1].getAttributes().getCases7_bl_per_100k();
-            result += value;
+            valueOfNewInfections += stateData.getData()[stateData.getData().length - i - 1].getAttributes().getCases7_bl();
+            population += stateData.getData()[stateData.getData().length-i-1].getAttributes().getLAN_EW_EWZ();
+
         }
-        result = (result/stateData.getData().length);
+        result = (valueOfNewInfections / population) * 100000;
         return result;
     }
 
@@ -51,4 +53,5 @@ public class RobertKochInstitutData {
         }
         return result;
     }
+
 }

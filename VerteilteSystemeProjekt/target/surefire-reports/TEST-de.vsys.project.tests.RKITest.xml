@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="3" failures="0" name="de.vsys.project.tests.RKITest" time="8.27" errors="0" skipped="0">
+<testsuite tests="3" failures="0" name="de.vsys.project.tests.RKITest" time="8.829" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2020.3.2"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -60,7 +60,7 @@
     <property name="java.vendor.version" value="AdoptOpenJDK"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="de.vsys.project.tests.RKITest" name="de.vsys.project.tests.RKITest.testCalculateIncidenceValueLastSevenDays" time="0.158"/>
-  <testcase classname="de.vsys.project.tests.RKITest" name="de.vsys.project.tests.RKITest.testCalculateRequiredDaysForLockdown" time="6.119"/>
-  <testcase classname="de.vsys.project.tests.RKITest" name="de.vsys.project.tests.RKITest.testCalculateTargetNumberOfTotalInfection" time="1.993"/>
+  <testcase classname="de.vsys.project.tests.RKITest" name="de.vsys.project.tests.RKITest.testCalculateRequiredDaysForLockdown" time="6.695"/>
+  <testcase classname="de.vsys.project.tests.RKITest" name="de.vsys.project.tests.RKITest.testCalculateTargetNumberOfTotalInfection" time="2.081"/>
+  <testcase classname="de.vsys.project.tests.RKITest" name="de.vsys.project.tests.RKITest.testCalculateIncidenceValueLastSevenDays" time="0.053"/>
 </testsuite>

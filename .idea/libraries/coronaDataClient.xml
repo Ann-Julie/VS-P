@@ -3,7 +3,6 @@
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/VerteilteSystemeProjekt/src/main/java/de/vsys/project/soap/wsimport/coronaDataClient.jar!/" />
     </CLASSES>
-    <JAVADOC />
     <SOURCES>
       <root url="jar://$PROJECT_DIR$/VerteilteSystemeProjekt/src/main/java/de/vsys/project/soap/wsimport/coronaDataClient.jar!/" />
     </SOURCES>

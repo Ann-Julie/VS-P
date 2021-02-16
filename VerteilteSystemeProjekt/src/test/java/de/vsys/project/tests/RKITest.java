@@ -16,18 +16,18 @@ public class RKITest {
     //This method tests the method that returns the required days left for lockdown
     @Test
     public void testCalculateRequiredDaysForLockdown(){
-        Assertions.assertEquals(10.46288445748389, robertKochInstitutData.calculateRequiredDaysForLockdown());
+        Assertions.assertEquals(10.201101174506286, robertKochInstitutData.calculateRequiredDaysForLockdown());
     }
 
     //This method tests the method that returns target number of total infections
     @Test
     public void testCalculateTargetNumberOfTotalInfection(){
-        Assertions.assertEquals(80416.99627419973, robertKochInstitutData.calculateTargetNumberOfTotalInfection());
+        Assertions.assertEquals(79532.23675724783, robertKochInstitutData.calculateTargetNumberOfTotalInfection());
     }
 
     //This method tests the method that returns the incidence value of the last seven days
     @Test
     public void testCalculateIncidenceValueLastSevenDays(){
-        Assertions.assertEquals(62.63588834909049, robertKochInstitutData.calculateIncidenceValueLastSevenDays());
+        Assertions.assertEquals(58.670109005513034, robertKochInstitutData.calculateIncidenceValueLastSevenDays());
     }
 }

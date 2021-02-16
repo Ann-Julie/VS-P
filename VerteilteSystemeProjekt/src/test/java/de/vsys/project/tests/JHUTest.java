@@ -16,25 +16,25 @@ public class JHUTest {
     //This method tests the method that checks the infections from the last twenty four hours
     @Test
     public void testInfectionsFromLastTwentyFourHours(){
-        Assertions.assertEquals(6484, johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
+        Assertions.assertEquals(5132, johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
     }
 
     //This method tests the method that checks the total infections
     @Test
     public void testTotalInfections(){
-        Assertions.assertEquals(143914, johnHopkinsUniversityData.checkTotalInfections());
+        Assertions.assertEquals(133319, johnHopkinsUniversityData.checkTotalInfections());
 
     }
 
     //This method tests the method that checks the average increase from the last n days, in this case we test for the last 7 days
     @Test
     public void testAverageIncreaseFromLastNDays(){
-        Assertions.assertEquals(-5364.285714285715,johnHopkinsUniversityData.checkAverageIncreaseFromLastNDays(7));
+        Assertions.assertEquals(-6639.0,johnHopkinsUniversityData.checkAverageIncreaseFromLastNDays(7));
     }
 
     //This method tests the method that checks the increase from the last twenty four hours
     @Test
     public void testIncreaseFromLastTwentyFourHours(){
-        Assertions.assertEquals(-1395, johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
+        Assertions.assertEquals(-6385, johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
     }
 }

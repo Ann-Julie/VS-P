@@ -16,13 +16,13 @@ public class JHUTest {
     //This method tests the method that checks the infections from the last twenty four hours
     @Test
     public void testInfectionsFromLastTwentyFourHours(){
-        Assertions.assertEquals(6484, johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
+        Assertions.assertEquals(5132, johnHopkinsUniversityData.checkNewInfectionsFromLastTwentyFourHours());
     }
 
     //This method tests the method that checks the total infections
     @Test
     public void testTotalInfections(){
-        Assertions.assertEquals(143914, johnHopkinsUniversityData.checkTotalInfections());
+        Assertions.assertEquals(133319, johnHopkinsUniversityData.checkTotalInfections());
 
     }
 

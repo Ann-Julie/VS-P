@@ -13,18 +13,18 @@ from telegram.ext import (
 )
 
 vSysBotToken = "1668868793:AAF5cLabcsGgRHK8ovTbTnMuJ7nMzQH-oGQ"
-# needed for our group chat, number is only reffering to this chat, not other group chats
+# needed for our group chat, number is only refering to this chat, not other group chats
 vSysChatId = "-507253319"
 
 # needed for avg increase last n days
 timeDurationUserInput = range(1)
 
 # to send messages to the bot, the token and group chat id are needed
-sendURL = "http://api.telegram.org/bot" + vSysBotToken + "/sendMessage"
-portNumber = 4567
+bot_send_url = "http://api.telegram.org/bot" + vSysBotToken + "/sendMessage"
+port_number = 4567
 
 # getURL = "http://localhost:" + str(portNumber)
-getURL = "http://167.99.252.170:" + str(portNumber)
+get_api_url = "http://167.99.252.170:" + str(port_number)
 
 
 def start(update, context):
@@ -40,7 +40,7 @@ def help(update, context):
 def fetch_value_from_json(chatId, message, key):
     message_as_json = json.loads(message)
     json_value = message_as_json[key]
-    return str(round(abs(json_value)))
+    return str(round(json_value))
 
 
 # call all methods
@@ -58,9 +58,9 @@ def all_data(update, context):
 # needed for all data
 def average_increase_last_60_days(update, context):
     update.message.reply_text(
-        'Durchschnittlicher Anstieg der letzten 60 Tage: ' + fetch_value_from_json(update.effective_message.chat_id,
-                                                                                   get_average_increase_last_n_days(60).text,
-                                                                                   "averageIncreaseLastNDays"))
+        'Durchschnittlicher Anstieg bzw. Abstieg der letzten 60 Tage: ' + fetch_value_from_json(update.effective_message.chat_id,
+                                                                                                get_average_increase_last_n_days(60).text,
+                                                                                                "averageIncreaseLastNDays"))
 
 
 def total_infections(update, context):
@@ -73,13 +73,13 @@ def new_infections_from_last_twenty_four_hours(update, context):
 
 
 def target_total_infection(update, context):
-    update.message.reply_text('Zielinzidenzwert der Gesamt Infektionen: ' + fetch_value_from_json(update.effective_message.chat_id,
-                                                                                                  get_target_total_infection().text, "targetTotalInfection"))
+    update.message.reply_text('Ziel Gesamtinfektion für Zielinzidenzwert (35): ' + fetch_value_from_json(update.effective_message.chat_id,
+                                                                                                         get_target_total_infection().text, "targetTotalInfection"))
 
 
 def forecast_necessary_lockdown_days(update, context):
-    update.message.reply_text('Annahme der nötigen Tage im Lockdown: ' + fetch_value_from_json(update.effective_message.chat_id,
-                                                                                               get_forecast_necessary_lockdown_days().text, "forecastNecessaryLockdownDays"))
+    update.message.reply_text('Vorhersage der nötigen Tage im Lockdown: ' + fetch_value_from_json(update.effective_message.chat_id,
+                                                                                                  get_forecast_necessary_lockdown_days().text, "forecastNecessaryLockdownDays"))
 
 
 def incidence_value_last_seven_days(update, context):
@@ -91,7 +91,7 @@ def incidence_value_last_seven_days(update, context):
 def average_increase_last_n_days(update, context):
     user_input = update.message.text
     if (2 <= int(user_input) <= 90):
-        update.message.reply_text("Durchschnittlicher Anstieg der letzten " + user_input + " Tage: " +
+        update.message.reply_text("Durchschnittlicher Anstieg bzw Abstieg der letzten " + user_input + " Tage: " +
                                   fetch_value_from_json(update.effective_message.chat_id, get_average_increase_last_n_days(user_input).text, "averageIncreaseLastNDays"))
         context.bot.send_message(update.effective_message.chat_id,
                                  'Geben Sie ein neues Intervall zwischen 2 bis 90 an oder beenden Sie den Abfrage Modus mit /cancel.')
@@ -101,8 +101,8 @@ def average_increase_last_n_days(update, context):
 
 
 def increase_last_twenty_four_hours(update, context):
-    update.message.reply_text('Anstieg der letzten 24 Stunden: ' + fetch_value_from_json(update.effective_message.chat_id,
-                                                                                         get_increase_last_twentyFour_hours().text, "increaseLastTwentyFourHours"))
+    update.message.reply_text('Anstieg bzw. Abstieg der letzten 24 Stunden: ' + fetch_value_from_json(update.effective_message.chat_id,
+                                                                                                      get_increase_last_twentyFour_hours().text, "increaseLastTwentyFourHours"))
 
 
 def end_user_input(update, context):
@@ -113,53 +113,53 @@ def end_user_input(update, context):
 # method needed to send messages to the group chat
 def send_message(chatId, message):
     print("test")
-    send_text = requests.post(sendURL + "?chat_id=" + str(chatId) + "&text=" + message)
+    send_text = requests.post(bot_send_url + "?chat_id=" + str(chatId) + "&text=" + message)
     # this is needed so we won't get response [200] but the json data
     data_raw = requests.get(send_text).text
     return data_raw
 
 def get_all_data():
     endPoint = "/alldata"
-    return requests.get(getURL + endPoint)
+    return requests.get(get_api_url + endPoint)
 
 
 def get_total_infections():
     endPoint = "/totalinfections"
-    return requests.get(getURL + endPoint)
+    return requests.get(get_api_url + endPoint)
 
 
 def get_new_infections_from_last_twenty_four_hours():
     endPoint = "/newinfectionsfromlasttwentyfourhours"
-    return requests.get(getURL + endPoint)
+    return requests.get(get_api_url + endPoint)
 
 
 def get_target_total_infection():
     endPoint = "/targettotalinfection"
-    return requests.get(getURL + endPoint)
+    return requests.get(get_api_url + endPoint)
 
 
 def get_forecast_necessary_lockdown_days():
     endPoint = "/forecastnecessarylockdowndays"
-    return requests.get(getURL + endPoint)
+    return requests.get(get_api_url + endPoint)
 
 
 def get_incidence_value_last_seven_days():
     endPoint = "/incidencevaluelastsevendays"
-    return requests.get(getURL + endPoint)
+    return requests.get(get_api_url + endPoint)
 
 
 def get_average_increase_last_n_days(days):
     endPoint = "/averageincreaselastndays/"
-    return requests.get(getURL + endPoint + str(days))
+    return requests.get(get_api_url + endPoint + str(days))
 
 
 def get_increase_last_twentyFour_hours():
     endPoint = "/increaselasttwentyfourhours"
-    return requests.get(getURL + endPoint)
+    return requests.get(get_api_url + endPoint)
 
 
 def cancel_query_mode(update, context):
-    update.message.reply_text('Ende des Abfrage Modus des durchschnittlichen Anstiegs der ausgewählten Tage.')
+    update.message.reply_text('Ende des Abfrage Modus des durchschnittlichen Anstiegs bzw. Abstiegs der ausgewählten Tage.')
     return ConversationHandler.END
 
 

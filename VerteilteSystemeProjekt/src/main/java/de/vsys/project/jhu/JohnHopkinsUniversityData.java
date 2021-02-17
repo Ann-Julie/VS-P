@@ -50,7 +50,7 @@ public class JohnHopkinsUniversityData {
     //This method calculates the average increase of the confirmed numbers in the time specified time period
     public double checkAverageIncreaseFromLastNDays(int days) {
         Data countryData = reader.readData();
-        if(days >= countryData.getData().length) {
+        if(days >= countryData.getData().length || days == 0) {
             days = countryData.getData().length - 1;
         }
         double result = 0;

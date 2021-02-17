@@ -75,7 +75,7 @@ public class RestInterface {
         });
 
         //returns the increase of the last twenty four hours as json
-        get("Beu", (request, response)->{
+        get("/increaselasttwentyfourhours", (request, response)->{
             IncreaseLastTwentyFourHours returnData = new IncreaseLastTwentyFourHours();
             returnData.setIncreaseLastTwentyFourHours(johnHopkinsUniversityData.checkIncreaseFromLastTwentyFourHours());
             return gson.toJson(returnData);
